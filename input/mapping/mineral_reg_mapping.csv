@@ -1,0 +1,33 @@
+GCAM_region_ID,region,copper_map,lithium_map,nickel_map,top_reg_map
+1,USA,USA,ROW,ROW,USA
+2,Africa_Eastern,ROW,ROW,ROW,ROW
+3,Africa_Northern,ROW,ROW,ROW,ROW
+4,Africa_Southern,ROW,ROW,ROW,ROW
+5,Africa_Western,ROW,ROW,ROW,Africa_Western
+6,Australia_NZ,Australia_NZ,Australia_NZ,Australia_NZ,Australia_NZ
+7,Brazil,ROW,Brazil,Brazil,Brazil
+8,Canada,Canada,ROW,ROW,ROW
+9,Central America and Caribbean,ROW,ROW,Central America and Caribbean,ROW
+10,Central Asia,Central Asia,ROW,ROW,ROW
+11,China,China,China,ROW,China
+12,EU-12,ROW,ROW,ROW,ROW
+13,EU-15,ROW,EU-15,ROW,ROW
+14,Europe_Eastern,ROW,ROW,ROW,ROW
+15,Europe_Non_EU,ROW,ROW,ROW,ROW
+16,European Free Trade Association,ROW,ROW,ROW,ROW
+17,India,ROW,ROW,ROW,ROW
+18,Indonesia,ROW,ROW,Indonesia,Indonesia
+19,Japan,ROW,ROW,ROW,ROW
+20,Mexico,ROW,ROW,ROW,ROW
+21,Middle East,ROW,ROW,ROW,ROW
+22,Pakistan,ROW,ROW,ROW,ROW
+23,Russia,ROW,ROW,Russia,Russia
+24,South Africa,ROW,ROW,ROW,ROW
+25,South America_Northern,ROW,ROW,ROW,ROW
+26,South America_Southern,South America_Southern,South America_Southern,ROW,South America_Southern
+27,South Asia,ROW,ROW,ROW,ROW
+28,South Korea,ROW,ROW,ROW,ROW
+29,Southeast Asia,ROW,ROW,Southeast Asia,Southeast Asia
+30,Taiwan,ROW,ROW,ROW,ROW
+31,Argentina,ROW,Argentina,ROW,ROW
+32,Colombia,ROW,ROW,ROW,ROW

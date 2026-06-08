@@ -1,0 +1,100 @@
+﻿source,mineral,year,Global Reserves,Global Resources,annual supply projections ,annual demand projections ,Cumulative Demand Projections
+Castillo and Eggert (2020),copper,2018,641,3020,,,
+Calvo et al. (2017),copper,1995,310,2300,,,
+Calvo et al. (2017),copper,2015,720,2100,,,
+Sverdrup et al. (2017),copper,2015,,3500,,,
+USGS MCS (2026),copper,2025,980,,,,
+USGS MCS (2026),copper,2015,,5000,,,
+IEA (2025),copper,2040,,,15,34,
+IEA (2025),copper,2030,,,23,31,
+Northey et al. (2014),copper,2010,,1771,,,
+Northey et al. (2014),copper,2030,,,25.3,,
+Northey et al. (2014),copper,2050,,,21.7,43.5,
+Northey et al. (2014),copper,2075,,,12.1,68.7,
+Northey et al. (2014),copper,2100,,,0.1,99.1,
+Elshkaki et al. (2016),copper,2040,,,45,,
+Elshkaki et al. (2016),copper,2050,,,53,55,
+Castillo and Eggert (2020),copper,2050,,,,,1193
+Castillo and Eggert (2020),copper,2050,,,,,1551
+Castillo and Eggert (2020),copper,2100,,,,,4788
+Castillo and Eggert (2020),copper,2100,,,,,7136
+de Koning et al. (2018),copper,2050,,,,27,
+de Koning et al. (2018),copper,2050,,,,37,
+Schipper et al. (2018),copper,2030,,,,30,
+Schipper et al. (2018),copper,2030,,,,55,
+Schipper et al. (2018),copper,2050,,,,40,
+Schipper et al. (2018),copper,2050,,,,120,
+Schipper et al. (2018),copper,2100,,,,60,
+Schipper et al. (2018),copper,2100,,,,450,
+Watari et al. (2018),copper,2030,,,,56,
+Watari et al. (2018),copper,2030,,,,57,
+Watari et al. (2018),copper,2050,,,,102,
+Watari et al. (2018),copper,2050,,,,108,
+Watari et al. (2018),copper,2060,,,,,3500
+Valero et al. (2018),copper,2050,,,,,767
+Calvo et al. (2017),lithium,1995,2.2,12,,,
+USGS MCS (2015),lithium,2015,13.5,39.5,,,
+Fleming et al. (2024),lithium,2022,,136,,,
+Busch et al. (2025),lithium,2025,21.6,108,,,
+USGS MCS (2026),lithium,2025,37,150,,,
+IEA (2025),lithium,2030,,,0.47,0.45,
+IEA (2025),lithium,2040,,,0.41,0.92,
+Busch et al. (2025),lithium,2050,,,,1.7,
+Busch et al. (2025),lithium,2050,,,,,30
+Wu et al. (2025),lithium,2030,,,,2,
+Wu et al. (2025),lithium,2050,,,,5,
+Watari et al. (2018),lithium,2030,,,,0.12,
+Watari et al. (2018),lithium,2030,,,,0.35,
+Watari et al. (2018),lithium,2050,,,,0.37,
+Watari et al. (2018),lithium,2050,,,,1.33,
+Watari et al. (2018),lithium,2060,,,,,5
+Watari et al. (2018),lithium,2060,,,,,35
+Hache et al. (2019),lithium,2030,,,,0.17,
+Hache et al. (2019),lithium,2030,,,,0.45,
+Hache et al. (2019),lithium,2050,,,,0.3,
+Hache et al. (2019),lithium,2050,,,,1.2,
+Hache et al. (2019),lithium,2050,,,,,8
+Hache et al. (2019),lithium,2050,,,,,24
+Valero et al. (2018),lithium,2030,,,,0.7,
+Valero et al. (2018),lithium,2050,,,,0.95,27
+Ziemann et al. (2018),lithium,2030,,,,0.2,
+Ziemann et al. (2018),lithium,2030,,,,0.7,
+Ziemann et al. (2018),lithium,2050,,,,0.57,
+Ziemann et al. (2018),lithium,2050,,,,1.6,
+de Koning et al. (2018),lithium,2050,,,,1.2,
+de Koning et al. (2018),lithium,2050,,,,1.6,
+Harvey (2018),lithium,2030,,,,0.06,
+Harvey (2018),lithium,2030,,,,0.07,
+Harvey (2018),lithium,2050,,,,0.23,
+Harvey (2018),lithium,2050,,,,0.33,
+Sverdrup (2016),lithium,2030,,,,0.15,
+Sverdrup (2016),lithium,2050,,,,0.5,
+Vikström et al. (2013),lithium,2030,,,,0.1,
+Vikström et al. (2013),lithium,2050,,,,0.3,
+Kushnir and Sandén (2012),lithium,2030,,,,0.1,
+Kushnir and Sandén (2012),lithium,2030,,,,0.45,
+Kushnir and Sandén (2012),lithium,2050,,,,0.2,
+Kushnir and Sandén (2012),lithium,2050,,,,1.4,
+USGS MCS (2026),nickel,2025,140,350,,,
+IEA (2025),nickel,2030,,,4.5,4.3,
+IEA (2025),nickel,2040,,,4.6,5.6,
+Calvo et al. (2017),nickel,1995,47,130,,,
+Calvo et al. (2017),nickel,2015,79,130,,,
+Elshkaki et al. (2017),nickel,2010,76,,,,
+Elshkaki et al. (2017),nickel,2040,,,,,75
+Elshkaki et al. (2017),nickel,2050,,,3.15,4.5,
+Olafsdottir & Sverdrup (2021),nickel,2021,266,342,,,
+Zhang et al. (2025),nickel,2023,,365,,,
+Bradley et al. (2025),nickel,2060,,,,6,200
+Bradley et al. (2025),nickel,2060,,,,18,320
+Sverdrup et al. (2017),nickel,2015,,185,,,
+Watari et al. (2018),nickel,2030,,,,3.8,
+Watari et al. (2018),nickel,2030,,,,4.6,
+Watari et al. (2018),nickel,2050,,,,6.6,
+Watari et al. (2018),nickel,2050,,,,10,
+Watari et al. (2018),nickel,2060,,,,,310
+Watari et al. (2018),nickel,2060,,,,,430
+Valero et al. (2018),nickel,2030,,,,3.2,
+Valero et al. (2018),nickel,2050,,,,4.5,121
+de Koning et al. (2018),nickel,2050,,,,1,
+de Koning et al. (2018),nickel,2050,,,,2,

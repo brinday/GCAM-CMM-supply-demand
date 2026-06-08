@@ -1,0 +1,100 @@
+sector,subsector,technology,sector_agg,subsector_agg,technology_agg,technology_agg0
+trn_pasg_aviation_dom_pass,Domestic Aviation,BEV,transportation,Aviation,Non-road Electric,Non-road Electric
+trn_aviation_intl_pass,International Aviation,BEV,transportation,Aviation,Non-road Electric,Non-road Electric
+trn_aviation_intl_pass,International Aviation,Hydrogen,transportation,Aviation,FCEV,Hydrogen
+trn_pasg_aviation_dom_pass,Domestic Aviation,Hydrogen,transportation,Aviation,FCEV,Hydrogen
+trn_aviation_intl_pass,International Aviation,Liquids,transportation,Aviation,Liquids,Liquids
+trn_pasg_aviation_dom_pass,Domestic Aviation,Liquids,transportation,Aviation,Liquids,Liquids
+trn_fret_rail_pass,Freight Rail,BEV,transportation,Freight Rail,Non-road Electric,Non-road Electric
+trn_fret_rail_pass,Freight Rail,Hybrid Liquids,transportation,Freight Rail,Liquids,Liquids
+trn_fret_rail_pass,Freight Rail,FCEV,transportation,Freight Rail,FCEV,Hydrogen
+trn_fret_rail_pass,Freight Rail,Liquids,transportation,Freight Rail,Liquids,Liquids
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),transportation,Freight Road,BEV,BEV (LFP)
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_si),transportation,Freight Road,BEV,BEV (LFP)
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),transportation,Freight Road,BEV,BEV (LFP)
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_si),transportation,Freight Road,BEV,BEV (LFP)
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),transportation,Freight Road,BEV,BEV (LFP)
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_si),transportation,Freight Road,BEV,BEV (LFP)
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (Na_ion),transportation,Freight Road,BEV,BEV (Na-ion)
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (Na_ion),transportation,Freight Road,BEV,BEV (Na-ion)
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (Na_ion),transportation,Freight Road,BEV,BEV (Na-ion)
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),transportation,Freight Road,BEV,BEV (NCA)
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),transportation,Freight Road,BEV,BEV (NCA)
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),transportation,Freight Road,BEV,BEV (NCA)
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),transportation,Freight Road,BEV,BEV (NMC111)
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),transportation,Freight Road,BEV,BEV (NMC111)
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),transportation,Freight Road,BEV,BEV (NMC111)
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),transportation,Freight Road,BEV,BEV (NMC622)
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),transportation,Freight Road,BEV,BEV (NMC622)
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),transportation,Freight Road,BEV,BEV (NMC622)
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),transportation,Freight Road,BEV,BEV (NMC811)
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_si),transportation,Freight Road,BEV,BEV (NMC811)
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),transportation,Freight Road,BEV,BEV (NMC811)
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_si),transportation,Freight Road,BEV,BEV (NMC811)
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),transportation,Freight Road,BEV,BEV (NMC811)
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_si),transportation,Freight Road,BEV,BEV (NMC811)
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_ssb),transportation,Freight Road,BEV,BEV (SSB)
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_ssb),transportation,Freight Road,BEV,BEV (SSB)
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_ssb),transportation,Freight Road,BEV,BEV (SSB)
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_ssb),transportation,Freight Road,BEV,BEV (SSB)
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_ssb),transportation,Freight Road,BEV,BEV (SSB)
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_ssb),transportation,Freight Road,BEV,BEV (SSB)
+trn_fret_road_pass,Light truck,FCEV,transportation,Freight Road,FCEV,Hydrogen
+trn_fret_road_pass,Heavy truck,Hybrid Liquids,transportation,Freight Road,Liquids,Liquids
+trn_fret_road_pass,Light truck,Hybrid Liquids,transportation,Freight Road,Liquids,Liquids
+trn_fret_road_pass,Medium truck,Hybrid Liquids,transportation,Freight Road,Liquids,Liquids
+trn_fret_road_pass,Heavy truck,FCEV,transportation,Freight Road,FCEV,Hydrogen
+trn_fret_road_pass,Medium truck,FCEV,transportation,Freight Road,FCEV,Hydrogen
+trn_fret_road_pass,Heavy truck,Liquids,transportation,Freight Road,Liquids,Liquids
+trn_fret_road_pass,Light truck,Liquids,transportation,Freight Road,Liquids,Liquids
+trn_fret_road_pass,Medium truck,Liquids,transportation,Freight Road,Liquids,Liquids
+trn_pasg_rail_pass,Passenger Rail,Liquids,transportation,Passenger Rail,Liquids,Liquids
+trn_pasg_hsr_pass,HSR,Electric,transportation,Passenger Rail,Non-road Electric,Non-road Electric
+trn_pasg_rail_pass,Passenger Rail,Electric,transportation,Passenger Rail,Non-road Electric,Non-road Electric
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,Liquids,transportation,Other,Liquids,Liquids
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,BEV,transportation,Other,Other,Other
+trn_pasg_road_bus_pass,Bus,Hybrid Liquids,transportation,Bus,Liquids,Liquids
+trn_pasg_road_bus_pass,Bus,FCEV,transportation,Bus,FCEV,Hydrogen
+trn_pasg_road_bus_pass,Bus,Liquids,transportation,Bus,Liquids,Liquids
+trn_pasg_road_bus_pass,Bus,NG,transportation,Bus,Other,Other
+trn_bus_bev_pass,bus_bev,bus_bev (LFP),transportation,Bus,BEV,BEV (LFP)
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_si),transportation,Bus,BEV,BEV (LFP)
+trn_bus_bev_pass,bus_bev,bus_bev (Na_ion),transportation,Bus,BEV,BEV (Na-ion)
+trn_bus_bev_pass,bus_bev,bus_bev (NMC111),transportation,Bus,BEV,BEV (NMC111)
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_si),transportation,Bus,BEV,BEV (NMC811)
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_ssb),transportation,Bus,BEV,BEV (NMC811)
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_ssb),transportation,Bus,BEV,BEV (SSB)
+trn_pasg_road_ldv_4w_pass,Car,Hybrid Liquids,transportation,4-Wheel LDV,Liquids,Liquids
+trn_pasg_road_ldv_4w_pass,Car,FCEV,transportation,4-Wheel LDV,FCEV,Hydrogen
+trn_pasg_road_ldv_4w_pass,Car,Liquids,transportation,4-Wheel LDV,Liquids,Liquids
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),transportation,4-Wheel LDV,BEV,BEV (LFP)
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_si),transportation,4-Wheel LDV,BEV,BEV (LFP)
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (Na_ion),transportation,4-Wheel LDV,BEV,BEV (Na-ion)
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),transportation,4-Wheel LDV,BEV,BEV (NCA)
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),transportation,4-Wheel LDV,BEV,BEV (NMC111)
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),transportation,4-Wheel LDV,BEV,BEV (NMC622)
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),transportation,4-Wheel LDV,BEV,BEV (NMC811)
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_si),transportation,4-Wheel LDV,BEV,BEV (NMC811)
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_ssb),transportation,4-Wheel LDV,BEV,BEV (SSB)
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_ssb),transportation,4-Wheel LDV,BEV,BEV (SSB)
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,FCEV,transportation,4-Wheel LDV,FCEV,Hydrogen
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Hybrid Liquids,transportation,4-Wheel LDV,Liquids,Liquids
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Liquids,transportation,4-Wheel LDV,Liquids,Liquids
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),transportation,4-Wheel LDV,BEV,BEV (LFP)
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_si),transportation,4-Wheel LDV,BEV,BEV (LFP)
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (Na_ion),transportation,4-Wheel LDV,BEV,BEV (Na-ion)
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),transportation,4-Wheel LDV,BEV,BEV (NCA)
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),transportation,4-Wheel LDV,BEV,BEV (NMC111)
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),transportation,4-Wheel LDV,BEV,BEV (NMC622)
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),transportation,4-Wheel LDV,BEV,BEV (NMC811)
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_si),transportation,4-Wheel LDV,BEV,BEV (NMC811)
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_ssb),transportation,4-Wheel LDV,BEV,BEV (SSB)
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_ssb),transportation,4-Wheel LDV,BEV,BEV (SSB)
+trn_dom_ship_pass,Domestic Ship,BEV,transportation,Shipping,Non-road Electric,Non-road Electric
+trn_ship_intl_pass,International Ship,BEV,transportation,Shipping,Non-road Electric,Non-road Electric
+trn_dom_ship_pass,Domestic Ship,Hybrid Liquids,transportation,Shipping,Liquids,Liquids
+trn_ship_intl_pass,International Ship,Hybrid Liquids,transportation,Shipping,Liquids,Liquids
+trn_dom_ship_pass,Domestic Ship,FCEV,transportation,Shipping,FCEV,Hydrogen
+trn_ship_intl_pass,International Ship,FCEV,transportation,Shipping,FCEV,Hydrogen
+trn_dom_ship_pass,Domestic Ship,Liquids,transportation,Shipping,Liquids,Liquids
+trn_ship_intl_pass,International Ship,Liquids,transportation,Shipping,Liquids,Liquids

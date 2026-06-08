@@ -1,0 +1,21 @@
+technology,technology1,technology0
+biomass (IGCC),Biomass,Biomass
+biomass (conv),Biomass,Biomass
+coal (IGCC),Coal,Coal
+coal (conv pul),Coal,Coal
+gas (CC),Gas,Gas
+gas (steam/CT),Gas,Gas
+geothermal,Geothermal,Geothermal
+hydro,Hydro,Hydro
+Gen_III,Nuclear,Nuclear
+refined liquids (CC),Refined Liquids,Refined Liquids
+refined liquids (steam/CT),Refined Liquids,Refined Liquids
+rooftop_pv,Solar PV,Solar PV
+CSP_storage,Solar CSP,Solar CSP
+PV,Solar PV,Solar PV
+PV_storage,Solar PV + Storage,Solar PV
+wind,Wind,Wind
+wind_offshore,Wind Offshore,Wind
+wind_storage,Wind + Storage,Wind
+CSP,Solar CSP,Solar CSP
+Gen_II_LWR,Nuclear,Nuclear

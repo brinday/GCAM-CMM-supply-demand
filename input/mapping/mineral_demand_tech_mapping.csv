@@ -1,0 +1,327 @@
+sector,subsector,technology,sector0
+H2 central production,biomass,biomass to H2,H2 production
+H2 central production,electricity,electrolysis,H2 production
+H2 central production,gas,natural gas steam reforming,H2 production
+H2 central production,nuclear,electrolysis,H2 production
+H2 central production,solar,electrolysis,H2 production
+H2 central production,wind,electrolysis,H2 production
+H2 industrial,onsite production,electrolysis,H2 production
+H2 wholesale dispensing,forecourt production,electrolysis,H2 production
+H2 wholesale dispensing,forecourt production,natural gas steam reforming,H2 production
+comm materials,hotels commercial,hotels commercial,Buildings
+comm materials,office commercial,office commercial,Buildings
+comm materials,others commercial,others commercial,Buildings
+comm materials,retail commercial,retail commercial,Buildings
+copper_other,copper_other,copper_other,Other
+elec_CSP_storage,CSP_storage,CSP_storage (dry_hybrid),Electricity generation
+elec_CSP_storage,CSP_storage,CSP_storage (recirculating),Electricity generation
+elec_Gen_III,Gen_III,Gen_III (once through),Electricity generation
+elec_Gen_III,Gen_III,Gen_III (recirculating),Electricity generation
+elec_Gen_III,Gen_III,Gen_III (seawater),Electricity generation
+elec_biomass (IGCC),biomass (IGCC),biomass (IGCC) (dry cooling),Electricity generation
+elec_biomass (IGCC),biomass (IGCC),biomass (IGCC) (once through),Electricity generation
+elec_biomass (IGCC),biomass (IGCC),biomass (IGCC) (recirculating),Electricity generation
+elec_biomass (IGCC),biomass (IGCC),biomass (IGCC) (seawater),Electricity generation
+elec_biomass (conv),biomass (conv),biomass (conv) (dry cooling),Electricity generation
+elec_biomass (conv),biomass (conv),biomass (conv) (once through),Electricity generation
+elec_biomass (conv),biomass (conv),biomass (conv) (recirculating),Electricity generation
+elec_biomass (conv),biomass (conv),biomass (conv) (seawater),Electricity generation
+elec_coal (IGCC),coal (IGCC),coal (IGCC) (dry cooling),Electricity generation
+elec_coal (IGCC),coal (IGCC),coal (IGCC) (once through),Electricity generation
+elec_coal (IGCC),coal (IGCC),coal (IGCC) (recirculating),Electricity generation
+elec_coal (IGCC),coal (IGCC),coal (IGCC) (seawater),Electricity generation
+elec_coal (conv pul),coal (conv pul),coal (conv pul) (dry cooling),Electricity generation
+elec_coal (conv pul),coal (conv pul),coal (conv pul) (once through),Electricity generation
+elec_coal (conv pul),coal (conv pul),coal (conv pul) (recirculating),Electricity generation
+elec_coal (conv pul),coal (conv pul),coal (conv pul) (seawater),Electricity generation
+elec_gas (CC),gas (CC),gas (CC) (dry cooling),Electricity generation
+elec_gas (CC),gas (CC),gas (CC) (once through),Electricity generation
+elec_gas (CC),gas (CC),gas (CC) (recirculating),Electricity generation
+elec_gas (CC),gas (CC),gas (CC) (seawater),Electricity generation
+elec_gas (steam/CT),gas (steam/CT),gas (steam/CT) (dry cooling),Electricity generation
+elec_gas (steam/CT),gas (steam/CT),gas (steam/CT) (once through),Electricity generation
+elec_gas (steam/CT),gas (steam/CT),gas (steam/CT) (recirculating),Electricity generation
+elec_gas (steam/CT),gas (steam/CT),gas (steam/CT) (seawater),Electricity generation
+elec_geothermal,geothermal,geothermal (dry_hybrid),Electricity generation
+elec_geothermal,geothermal,geothermal (recirculating),Electricity generation
+elec_refined liquids (CC),refined liquids (CC),refined liquids (CC) (dry cooling),Electricity generation
+elec_refined liquids (CC),refined liquids (CC),refined liquids (CC) (once through),Electricity generation
+elec_refined liquids (CC),refined liquids (CC),refined liquids (CC) (recirculating),Electricity generation
+elec_refined liquids (CC),refined liquids (CC),refined liquids (CC) (seawater),Electricity generation
+elec_refined liquids (steam/CT),refined liquids (steam/CT),refined liquids (steam/CT) (dry cooling),Electricity generation
+elec_refined liquids (steam/CT),refined liquids (steam/CT),refined liquids (steam/CT) (once through),Electricity generation
+elec_refined liquids (steam/CT),refined liquids (steam/CT),refined liquids (steam/CT) (recirculating),Electricity generation
+elec_refined liquids (steam/CT),refined liquids (steam/CT),refined liquids (steam/CT) (seawater),Electricity generation
+elect_td_bld,elect_td_bld,elect_td_bld,Electricity T&D
+elect_td_ind,elect_td_ind,elect_td_ind,Electricity T&D
+elect_td_trn,elect_td_trn,elect_td_trn,Electricity T&D
+electricity,hydro,hydro,Electricity generation
+lithium_other,lithium_other,lithium_other,Other
+nickel_other,nickel_other,nickel_other,Other
+pv_mineral,pv_mineral,pv_mineral (CIGS),Electricity generation
+pv_mineral,pv_mineral,pv_mineral (CdTe),Electricity generation
+pv_mineral,pv_mineral,pv_mineral (a-Si),Electricity generation
+pv_mineral,pv_mineral,pv_mineral (c-Si),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (LFP),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC532),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (NMC811),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CIGS) (VRFB),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (LFP),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC532),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (NMC811),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (CdTe) (VRFB),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (a-Si) (LFP),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (LFP),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC532),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (NMC811),Electricity generation
+pv_storage_mineral,pv_storage_mineral,pv_storage_mineral (c-Si) (VRFB),Electricity generation
+resid materials_d1,apartments rural,apartments rural,Buildings
+resid materials_d1,apartments urban,apartments urban,Buildings
+resid materials_d1,detached rural,detached rural,Buildings
+resid materials_d1,detached urban,detached urban,Buildings
+resid materials_d1,high-rise rural,high-rise rural,Buildings
+resid materials_d1,high-rise urban,high-rise urban,Buildings
+resid materials_d1,semi-detached rural,semi-detached rural,Buildings
+resid materials_d1,semi-detached urban,semi-detached urban,Buildings
+resid materials_d10,apartments rural,apartments rural,Buildings
+resid materials_d10,apartments urban,apartments urban,Buildings
+resid materials_d10,detached rural,detached rural,Buildings
+resid materials_d10,detached urban,detached urban,Buildings
+resid materials_d10,high-rise rural,high-rise rural,Buildings
+resid materials_d10,high-rise urban,high-rise urban,Buildings
+resid materials_d10,semi-detached rural,semi-detached rural,Buildings
+resid materials_d10,semi-detached urban,semi-detached urban,Buildings
+resid materials_d2,apartments rural,apartments rural,Buildings
+resid materials_d2,apartments urban,apartments urban,Buildings
+resid materials_d2,detached rural,detached rural,Buildings
+resid materials_d2,detached urban,detached urban,Buildings
+resid materials_d2,high-rise rural,high-rise rural,Buildings
+resid materials_d2,high-rise urban,high-rise urban,Buildings
+resid materials_d2,semi-detached rural,semi-detached rural,Buildings
+resid materials_d2,semi-detached urban,semi-detached urban,Buildings
+resid materials_d3,apartments rural,apartments rural,Buildings
+resid materials_d3,apartments urban,apartments urban,Buildings
+resid materials_d3,detached rural,detached rural,Buildings
+resid materials_d3,detached urban,detached urban,Buildings
+resid materials_d3,high-rise rural,high-rise rural,Buildings
+resid materials_d3,high-rise urban,high-rise urban,Buildings
+resid materials_d3,semi-detached rural,semi-detached rural,Buildings
+resid materials_d3,semi-detached urban,semi-detached urban,Buildings
+resid materials_d4,apartments rural,apartments rural,Buildings
+resid materials_d4,apartments urban,apartments urban,Buildings
+resid materials_d4,detached rural,detached rural,Buildings
+resid materials_d4,detached urban,detached urban,Buildings
+resid materials_d4,high-rise rural,high-rise rural,Buildings
+resid materials_d4,high-rise urban,high-rise urban,Buildings
+resid materials_d4,semi-detached rural,semi-detached rural,Buildings
+resid materials_d4,semi-detached urban,semi-detached urban,Buildings
+resid materials_d5,apartments rural,apartments rural,Buildings
+resid materials_d5,apartments urban,apartments urban,Buildings
+resid materials_d5,detached rural,detached rural,Buildings
+resid materials_d5,detached urban,detached urban,Buildings
+resid materials_d5,high-rise rural,high-rise rural,Buildings
+resid materials_d5,high-rise urban,high-rise urban,Buildings
+resid materials_d5,semi-detached rural,semi-detached rural,Buildings
+resid materials_d5,semi-detached urban,semi-detached urban,Buildings
+resid materials_d6,apartments rural,apartments rural,Buildings
+resid materials_d6,apartments urban,apartments urban,Buildings
+resid materials_d6,detached rural,detached rural,Buildings
+resid materials_d6,detached urban,detached urban,Buildings
+resid materials_d6,high-rise rural,high-rise rural,Buildings
+resid materials_d6,high-rise urban,high-rise urban,Buildings
+resid materials_d6,semi-detached rural,semi-detached rural,Buildings
+resid materials_d6,semi-detached urban,semi-detached urban,Buildings
+resid materials_d7,apartments rural,apartments rural,Buildings
+resid materials_d7,apartments urban,apartments urban,Buildings
+resid materials_d7,detached rural,detached rural,Buildings
+resid materials_d7,detached urban,detached urban,Buildings
+resid materials_d7,high-rise rural,high-rise rural,Buildings
+resid materials_d7,high-rise urban,high-rise urban,Buildings
+resid materials_d7,semi-detached rural,semi-detached rural,Buildings
+resid materials_d7,semi-detached urban,semi-detached urban,Buildings
+resid materials_d8,apartments rural,apartments rural,Buildings
+resid materials_d8,apartments urban,apartments urban,Buildings
+resid materials_d8,detached rural,detached rural,Buildings
+resid materials_d8,detached urban,detached urban,Buildings
+resid materials_d8,high-rise rural,high-rise rural,Buildings
+resid materials_d8,high-rise urban,high-rise urban,Buildings
+resid materials_d8,semi-detached rural,semi-detached rural,Buildings
+resid materials_d8,semi-detached urban,semi-detached urban,Buildings
+resid materials_d9,apartments rural,apartments rural,Buildings
+resid materials_d9,apartments urban,apartments urban,Buildings
+resid materials_d9,detached rural,detached rural,Buildings
+resid materials_d9,detached urban,detached urban,Buildings
+resid materials_d9,high-rise rural,high-rise rural,Buildings
+resid materials_d9,high-rise urban,high-rise urban,Buildings
+resid materials_d9,semi-detached rural,semi-detached rural,Buildings
+resid materials_d9,semi-detached urban,semi-detached urban,Buildings
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CIGS),Electricity generation
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (CdTe),Electricity generation
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (a-Si),Electricity generation
+rooftop_pv_mineral,rooftop_pv_mineral,rooftop_pv_mineral (c-Si),Electricity generation
+trn_aviation_intl_pass,International Aviation,BEV,Transport
+trn_aviation_intl_pass,International Aviation,Hydrogen,Transport
+trn_aviation_intl_pass,International Aviation,Liquids,Transport
+trn_bus_bev_pass,bus_bev,bus_bev (LFP),Transport
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_si),Transport
+trn_bus_bev_pass,bus_bev,bus_bev (LFP_ssb),Transport
+trn_bus_bev_pass,bus_bev,bus_bev (NMC111),Transport
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_si),Transport
+trn_bus_bev_pass,bus_bev,bus_bev (NMC811_ssb),Transport
+trn_bus_bev_pass,bus_bev,bus_bev (Na_ion),Transport
+trn_fret_rail_pass,Freight Rail,BEV,Transport
+trn_fret_rail_pass,Freight Rail,Coal,Transport
+trn_fret_rail_pass,Freight Rail,Electric,Transport
+trn_fret_rail_pass,Freight Rail,FCEV,Transport
+trn_fret_rail_pass,Freight Rail,Hybrid Liquids,Transport
+trn_fret_rail_pass,Freight Rail,Liquids,Transport
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP),Transport
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_si),Transport
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (LFP_ssb),Transport
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NCA),Transport
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC111),Transport
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC622),Transport
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811),Transport
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_si),Transport
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (NMC811_ssb),Transport
+trn_fret_road_ht_bev_pass,fret_road_ht_bev,h_truck_bev (Na_ion),Transport
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP),Transport
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_si),Transport
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (LFP_ssb),Transport
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NCA),Transport
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC111),Transport
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC622),Transport
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811),Transport
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_si),Transport
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (NMC811_ssb),Transport
+trn_fret_road_lt_bev_pass,fret_road_lt_bev,l_truck_bev (Na_ion),Transport
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP),Transport
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_si),Transport
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (LFP_ssb),Transport
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NCA),Transport
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC111),Transport
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC622),Transport
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811),Transport
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_si),Transport
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (NMC811_ssb),Transport
+trn_fret_road_mt_bev_pass,fret_road_mt_bev,m_truck_bev (Na_ion),Transport
+trn_fret_road_pass,Heavy truck,FCEV,Transport
+trn_fret_road_pass,Heavy truck,Hybrid Liquids,Transport
+trn_fret_road_pass,Heavy truck,Liquids,Transport
+trn_fret_road_pass,Light truck,FCEV,Transport
+trn_fret_road_pass,Light truck,Hybrid Liquids,Transport
+trn_fret_road_pass,Light truck,Liquids,Transport
+trn_fret_road_pass,Medium truck,FCEV,Transport
+trn_fret_road_pass,Medium truck,Hybrid Liquids,Transport
+trn_fret_road_pass,Medium truck,Liquids,Transport
+trn_pasg_aviation_dom_pass,Domestic Aviation,BEV,Transport
+trn_pasg_aviation_dom_pass,Domestic Aviation,Hydrogen,Transport
+trn_pasg_aviation_dom_pass,Domestic Aviation,Liquids,Transport
+trn_pasg_hsr_pass,HSR,Electric,Transport
+trn_pasg_rail_pass,Passenger Rail,Electric,Transport
+trn_pasg_rail_pass,Passenger Rail,Liquids,Transport
+trn_pasg_road_bus_pass,Bus,FCEV,Transport
+trn_pasg_road_bus_pass,Bus,Hybrid Liquids,Transport
+trn_pasg_road_bus_pass,Bus,Liquids,Transport
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,BEV,Transport
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,Liquids,Transport
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP),Transport
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_si),Transport
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (LFP_ssb),Transport
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NCA),Transport
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC111),Transport
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC622),Transport
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811),Transport
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_si),Transport
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (NMC811_ssb),Transport
+trn_pasg_road_ldv_4W_hc_bev_pass,largecar_bev,largecar_bev (Na_ion),Transport
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP),Transport
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_si),Transport
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (LFP_ssb),Transport
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NCA),Transport
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC111),Transport
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC622),Transport
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811),Transport
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_si),Transport
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (NMC811_ssb),Transport
+trn_pasg_road_ldv_4W_lc_bev_pass,minicar_bev,minicar_bev (Na_ion),Transport
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP),Transport
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_si),Transport
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (LFP_ssb),Transport
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NCA),Transport
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC111),Transport
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC622),Transport
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811),Transport
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_si),Transport
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (NMC811_ssb),Transport
+trn_pasg_road_ldv_4W_mc_bev_pass,car_bev,car_bev (Na_ion),Transport
+trn_pasg_road_ldv_4w_pass,Car,FCEV,Transport
+trn_pasg_road_ldv_4w_pass,Car,Hybrid Liquids,Transport
+trn_pasg_road_ldv_4w_pass,Car,Liquids,Transport
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,FCEV,Transport
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Hybrid Liquids,Transport
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,Liquids,Transport
+trn_pasg_road_ldv_4w_pass,Mini Car,FCEV,Transport
+trn_pasg_road_ldv_4w_pass,Mini Car,Hybrid Liquids,Transport
+trn_pasg_road_ldv_4w_pass,Mini Car,Liquids,Transport
+trn_ship_intl_pass,International Ship,Hybrid Liquids,Transport
+trn_ship_intl_pass,International Ship,Liquids,Transport
+trn_ship_intl_pass,International Ship,BEV,Transport
+trn_pasg_cycle_pass,Cycle,Cycle,Transport
+wind_mineral,wind_mineral,wind_mineral (DD-EESG),Electricity generation
+wind_mineral,wind_mineral,wind_mineral (DD-PMSG),Electricity generation
+wind_mineral,wind_mineral,wind_mineral (GB-DFIG),Electricity generation
+wind_mineral,wind_mineral,wind_mineral (GB-PMSG),Electricity generation
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (DD-PMSG),Electricity generation
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-DFIG),Electricity generation
+wind_offshore_mineral,wind_offshore_mineral,wind_offshore_mineral (GB-PMSG),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (LFP),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC532),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (NMC811),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-EESG) (VRFB),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (LFP),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC532),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (NMC811),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (DD-PMSG) (VRFB),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (LFP),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC532),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (NMC811),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-DFIG) (VRFB),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (LFP),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC532),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (NMC811),Electricity generation
+wind_storage_mineral,wind_storage_mineral,wind_storage_mineral (GB-PMSG) (VRFB),Electricity generation
+elec_CSP,CSP,CSP (dry_hybrid),Electricity generation
+elec_CSP,CSP,CSP (recirculating),Electricity generation
+trn_dom_ship_pass,Domestic Ship,Hybrid Liquids,Transport
+trn_pasg_road_bus_pass,Bus,NG,Transport
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,NG,Transport
+trn_pasg_road_ldv_4w_pass,Car,NG,Transport
+trn_pasg_road_ldv_4w_pass,Large Car and Truck,NG,Transport
+trn_pasg_road_ldv_4w_pass,Mini Car,NG,Transport
+trn_dom_ship_pass,Domestic Ship,Liquids,Transport
+elec_Gen_II_LWR,Gen_II_LWR,Gen_II_LWR (once through),Electricity generation
+elec_Gen_II_LWR,Gen_II_LWR,Gen_II_LWR (recirculating),Electricity generation
+elec_Gen_II_LWR,Gen_II_LWR,Gen_II_LWR (seawater),Electricity generation
+elec_coal (conv pul),coal (conv pul),coal (conv pul) (cooling pond),Electricity generation
+elec_refined liquids (steam/CT),refined liquids (steam/CT),refined liquids (steam/CT) (cooling pond),Electricity generation
+elec_Gen_III,Gen_III,Gen_III (cooling pond),Electricity generation
+elec_Gen_II_LWR,Gen_II_LWR,Gen_II_LWR (cooling pond),Electricity generation
+elec_biomass (conv),biomass (conv),biomass (conv) (cooling pond),Electricity generation
+elec_gas (CC),gas (CC),gas (CC) (cooling pond),Electricity generation
+elec_gas (steam/CT),gas (steam/CT),gas (steam/CT) (cooling pond),Electricity generation
+trn_dom_ship_pass,Domestic Ship,BEV,Transport
+trn_dom_ship_pass,Domestic Ship,FCEV,Transport
+trn_fret_road_pass,Light truck,NG,Transport
+trn_pasg_road_ldv_2_3W_pass,2W and 3W,LA-BEV,Transport
+trn_ship_intl_pass,International Ship,FCEV,Transport
+aluminium_other,aluminium_other,aluminium_other,Other
+cobalt_other,cobalt_other,cobalt_other,Other
+graphite_other,graphite_other,graphite_other,Other
+manganese_other,manganese_other,manganese_other,Other
+neodymium_other,neodymium_other,neodymium_other,Other
+platinum_other,platinum_other,platinum_other,Other
+silicon_other,silicon_other,silicon_other,Other
+steel_other,steel_other,steel_other,Other
+tellurium_other,tellurium_other,tellurium_other,Other
+vanadium_other,vanadium_other,vanadium_other,Other
