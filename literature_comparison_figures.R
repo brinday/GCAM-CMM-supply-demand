@@ -6,19 +6,7 @@
 # Constants and Setup
 # =====================================================================
 
-#load libraries
-library(rgcam)
-library(readr)
-library(tidyr)
-library(dplyr)
-library(ggplot2)
-library(scales)  
-library(viridis) 
-library(stringr)
-library(geofacet)
-library(ggpattern)
-library(patchwork)
-library(ggnewscale)             
+       
 
 SCENARIO_labels <- c("01272026_UnlimitSupply_BR" = "Unconstrained supply",
                      "01272026_UnlimitSupply_EnR" = "Unconstrained supply: Increased recycling",
@@ -78,22 +66,22 @@ source_palette_annual <- c(
 # =====================================================================
 
 CMM_data <- read_csv(
-  "input/Table_S1_Summary_CMM.csv"
+  "input/data/Table_S1_Summary_CMM.csv"
 ) %>% 
   filter(!(source == "Castillo and Eggert (2020)" & year == 2100))
 
-GCAM_data_reserves <- read_csv("input/global_res_avail_total.csv") %>% 
+GCAM_data_reserves <- read_csv("input/data/global_res_avail_total.csv") %>% 
   filter(year %in% 2021:2075) %>%
   mutate(scenario = SCENARIO_labels[scenario]) 
 
 GCAM_data_cumulative_demand <- read_csv(
-  "input/global_total_cum_res_prod.csv"
+  "input/data/global_total_cum_res_prod.csv"
 ) %>% 
   filter(year %in% 2021:2075) %>%
   mutate(scenario = SCENARIO_labels[scenario]) 
 
 GCAM_data_annual_demand <- read_csv(
-  "input/global_total_demand.csv"
+  "input/data/global_total_demand.csv"
 ) %>% 
   filter(year %in% 2021:2075) %>%
   mutate(scenario = SCENARIO_labels[scenario]) 
@@ -306,7 +294,7 @@ combined_plot <- ggplot() +
 combined_plot
 
 ggsave(
-  "plots/cumulative_minerals_plot.png",
+  "output/FigS1.png",
   combined_plot,
   width = 8,  
   height = 8,   
@@ -505,7 +493,7 @@ combined_plot_annual <- ggplot() +
 combined_plot_annual
 
 ggsave(
-  "plots/combined_plot_annual.png",
+  "output/FigS2.png",
   combined_plot_annual,
   width = 8,  
   height = 8,   
