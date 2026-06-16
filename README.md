@@ -14,7 +14,7 @@ Yarlagadda, B. (2026). Input files and model version for GCAM-CMM-supply-demand.
 This study's model version is based on GCAM v8.2.
 
 ### Output data
-Yarlagadda, B. (2025). Output data from Yarlagadda et al. gcam-CMM-supply-demand-paper
+Yarlagadda, B. (2026). Output data from Yarlagadda et al. gcam-CMM-supply-demand-paper
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20571203.svg)](https://doi.org/10.5281/zenodo.20571203)
 
 ### System requirements:
@@ -31,5 +31,5 @@ Output data used to generate all results and figures in the paper have been prov
 
 To reproduce the figures shown in the paper:
 1. clone the repository
-2. download the latest prj files from the zenodo repository for "Output data" and add it to use the _\input\data folder
+2. download the latest prj files from the zenodo repository for "Output data" and add it to the _\input\data folder
 3. run script generate_figures.R
