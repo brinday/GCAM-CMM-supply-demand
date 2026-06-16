@@ -11,6 +11,8 @@ To be added
 Yarlagadda, B. (2026). Input files and model version for GCAM-CMM-supply-demand. Zenodo.
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20559774.svg)](https://doi.org/10.5281/zenodo.20559774)
 
+This study's model version is based on GCAM v8.2.
+
 ### Output data
 Yarlagadda, B. (2025). Output data from Yarlagadda et al. gcam-CMM-supply-demand-paper
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20571203.svg)](https://doi.org/10.5281/zenodo.20571203)
@@ -20,13 +22,12 @@ Software dependencies (and versions) for running GCAM, an open source model, are
 https://jgcri.github.io/gcam-doc/gcam-build.html
 
 ### Installation guide:
-Installation requirements for running GCAM are documented at:
-https://jgcri.github.io/gcam-doc/user-guide.html
-To install and compile GCAM, it typically takes 2-3 hours.
+A compiled executable (for Linux systems) used to run this study's model version is provided in the "GCAM Model Version and Input Files" repository above. Alternatively, you can install and compile GCAM using the instructions documented at: https://jgcri.github.io/gcam-doc/user-guide.html. To install and compile GCAM, it typically takes 2-3 hours. 
 
 ### Demo:
-To run the scenarios in this paper, use the exe/configuration.xml included in the input files.
-Output data used to generate all results and figures in the paper have been provided in the output dataset. 
+To run the scenarios in this paper, use the exe/configuration_*.xml files (a total of 15 configuration files for each of the 15 scenarios in the paper) included in the "GCAM Model Version and Input Files" repository above. To run a single scenario, it typically takes 30 minutes.
+
+Output data used to generate all results and figures in the paper have been provided in the output dataset. To run this script and generate all figures, it typically takes ~20 minutes.
 
 To reproduce the figures shown in the paper:
 1. clone the repository
