@@ -27,7 +27,7 @@ library(ggforce)   # for geom_circle
 
 # Clear env / set working directory ------------------------------------------
 
-setwd("C:/Minerals/Supply/GCAM-CMM-supply-demand")  ## set wd based on user's workspace!
+#setwd("C:/Minerals/Supply/GCAM-CMM-supply-demand")  ## set wd based on user's workspace!
 
 PLOT_FOLDER <- paste(getwd(), "/output/", sep = "")
 
