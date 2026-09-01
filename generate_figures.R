@@ -1,3 +1,34 @@
+# Program Name: generate_figures.R
+# Author: Brinda Yarlagadda
+# Date Last Updated: 9/1/2026
+
+# NOTE:
+# Install Rtools 4.4 to run this script: https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html
+# Install the packages below only ONCE (comment them out after installed)
+install.packages("devtools", type = "binary")
+install.packages("remotes")
+
+remotes::install_github(
+  "JGCRI/rgcam",
+  dependencies = TRUE,
+  build_vignettes = FALSE,
+  upgrade = "never"
+)
+
+remotes::install_github(
+  "JGCRI/gcamdata",
+  dependencies = TRUE,
+  build_vignettes = FALSE,
+  upgrade = "never"
+)
+
+remotes::install_github(
+  "JGCRI/rmap",
+  dependencies = TRUE,
+  build_vignettes = FALSE,
+  upgrade = "never"
+)
+
 # Load packages ---------------------------------------------------------------
 library(patchwork)
 library(readr)
@@ -1067,7 +1098,6 @@ Fig1b <-
   labs(x = "", y = "trillion 2025$", title = "Cumulative extraction costs") 
 
 
-print(Fig1b)
 
 ggsave(paste0(PLOT_FOLDER,"Fig1b.png", sep = ""),width=9, height=3, units="in")
 
@@ -1121,7 +1151,6 @@ fig2a <-
   scale_color_manual(labels = SCENARIO_labels, name = "Scenario", values = SCENARIO_colors)+
   labs(y = "Mt/yr", x = "")
 
-print(fig2a)
 
 
 # FIGURE 2B: GLOBAL MINERAL PRODUCTION BY STAGE (REFERENCE, SHORT LEAD TIMES) --------------------------------------------------------------------
@@ -1209,7 +1238,6 @@ global_res_prod_tech_stages <- global_res_prod_tech %>%
     guides(linetype = "none",
            color = "none")
   
-  print(fig2b)
   
 # FIGURE 2 combined -------------------------------------------------------
 
@@ -1221,8 +1249,6 @@ Fig2ab <- (fig2a | fig2b) +
     legend.position = "right"
   )
 
-
-  print(Fig2ab)
   
   ggsave(paste0(PLOT_FOLDER,"Fig2.png", sep = ""),width=15, height=7, units="in")
   
@@ -1281,8 +1307,6 @@ Fig2ab <- (fig2a | fig2b) +
     labs(y = "Mt/yr", x = "") +
     guides(color = "none")
   
-  print(fig3b)
-  
 
 # FIGURE 3C: SECTORAL DEMAND (DIFF FROM UNCONSTRAINED SUPPLY) -------------
 
@@ -1323,8 +1347,6 @@ fig3c <-
   ) +
   labs(y = "Mt/yr", x = "") 
 
-print(fig3c)
-
 
 # FIGURE 3 COMBINED -------------------------------------------------------
 #3a is the same as 2a
@@ -1338,7 +1360,6 @@ Fig3 <- (fig2a | fig3b | plot_spacer() | fig3c) +
     legend.position = "right"
   )
 
-print(Fig3)
 
 ggsave(paste0(PLOT_FOLDER,"Fig3.png", sep = ""),width=16, height=7, units="in")
 
@@ -1418,7 +1439,6 @@ fig4a <-
                                                                               "Average lead times Steady-state constrained supply" = "Steady-state constrained supply scenarios"))+
   labs(y = "Mt/yr", x = "")
 
-print(fig4a)
 
 
 
@@ -1515,7 +1535,6 @@ Fig4b <-
   labs(y = "Mt", x = "") +
   guides(linetype = "none")
 
-print(Fig4b)
 
 
 # FIGURE 4 COMBINED ---------------------------------------------------
@@ -1529,8 +1548,6 @@ Fig4 <- (fig4a | Fig4b) +
   theme(
     legend.position = "right"
   )
-
-print(Fig4)
 
 
 ggsave(paste0(PLOT_FOLDER,"Fig4.png", sep = ""),width=12, height=7, units="in")
@@ -2189,7 +2206,6 @@ Fig5a_alt <-
          fill = "none",
          linetype = "none")
 
-print(Fig5a_alt)
 
 SCENARIO_order <- c("01272026_UnlimitSupply_BR",
                     #"01272026_His_constrSupply_BR_noTC",
@@ -2289,7 +2305,6 @@ FigS9 <-
          color = "none",
          linetype = "none")
 
-print(FigS9)
 
 
 
@@ -2323,7 +2338,6 @@ print(FigS9)
   ) +
   labs(x = "", y = "Relative change \n (1=Unconstrained supply)", title = "Electricity generation prices") 
 
-print(Fig5b_alt)
 
 # FIGURE 5D: TRANSPORT PRICES PLOT ---------------------------------------
 
@@ -2358,7 +2372,6 @@ Fig5c_alt <-
   ) +
   labs(x = "", y = "Relative change \n (1=Unconstrained supply)", title = "4W LDV prices") 
 
-print(Fig5c_alt)
 
 
 # FIGURE 5E: ELECTRICITY GENERATION DIFF ----------------------------------
@@ -2429,10 +2442,6 @@ Fig5d <-
   ) +
   labs(x = "", y = "Relative change \n (1=Unconstrained supply)", title = "Electricity generation") 
 
-print(Fig5d)
-
-
-
 
 
 # FIGURE 5F: TRANSPORT SERVICE DIFF ----------------------------------
@@ -2477,11 +2486,6 @@ Fig5e <-
   labs(x = "", y = "Relative change \n (1=Unconstrained supply)", title = "4W LDV service output") 
 
 
-print(Fig5e)
-
-
-
-
 
 # FIGURE 5 COMBINED -------------------------------------------------------
 
@@ -2502,7 +2506,6 @@ Fig5alt <- (row1 / plot_spacer() / row2 / row3) +
     legend.position = "right"
   )
 
-print(Fig5alt)
 
 ggsave(paste0(PLOT_FOLDER,"Fig5.png", sep = ""),width=15, height=17, units="in")
 
@@ -2555,7 +2558,7 @@ p0 <-
     legend.position = "right",
     legend.key.width = unit(1, "cm")
   ) +
-  labs(y = "Mt/yr", x = "", title = "Mineral production by region")+
+  labs(y = "Mt/yr", x = "", title = "Mineral production by region")
   ggsave(paste0(PLOT_FOLDER,"FigS3.png", sep = ""),width=15, height=4, units="in")
 
 
@@ -2611,7 +2614,6 @@ figS4a <-
    scale_linetype_manual(labels = SCENARIO_labels, name = "Scenario", values = SCENARIO_lines)+
   labs(y = "Mt/yr", x = "")
 
-print(figS4a)
 
 
 # FIGURE S4B: GLOBAL MINERAL PRODUCTION BY STAGE (REFERENCE, SHORT LEAD TIMES) --------------------------------------------------------------------
@@ -2705,7 +2707,7 @@ figS4b <-
   guides(linetype = "none",
          color = "none")
 
-print(figS4b)
+
 
 # FIGURE S4 combined -------------------------------------------------------
 
@@ -2719,7 +2721,6 @@ FigS4 <- (figS4a | figS4b) +
   )
 
 
-print(FigS4)
 
 ggsave(paste0(PLOT_FOLDER,"FigS4.png", sep = ""),width=15, height=7, units="in")
 
@@ -2778,7 +2779,6 @@ figS5a <-
   scale_linetype_manual(labels = SCENARIO_labels, name = "Scenario", values = SCENARIO_lines)+
   labs(y = "Mt/yr", x = "")
 
-print(figS5a)
 
 
 # FIGURE S5B: GLOBAL MINERAL PRODUCTION BY STAGE (REFERENCE, SHORT LEAD TIMES) --------------------------------------------------------------------
@@ -2872,7 +2872,7 @@ figS5b <-
   guides(linetype = "none",
          color = "none")
 
-print(figS5b)
+
 
 # FIGURE S5 combined -------------------------------------------------------
 
@@ -2886,7 +2886,6 @@ FigS5 <- (figS5a | figS5b) +
   )
 
 
-print(FigS5)
 
 ggsave(paste0(PLOT_FOLDER,"FigS5.png", sep = ""),width=15, height=7, units="in")
 
@@ -2971,7 +2970,6 @@ figS6b <-
   guides(color = "none",
          linetype = "none")
 
-print(figS6b)
 
 
 # FIGURE S6C: SECTORAL DEMAND (DIFF FROM UNCONSTRAINED SUPPLY) -------------
@@ -3038,7 +3036,6 @@ figS6c <-
   ) +
   labs(y = "Mt/yr", x = "") 
 
-print(figS6c)
 
 
 # FIGURE S6 COMBINED -------------------------------------------------------
@@ -3053,7 +3050,6 @@ FigS6 <- (figS4a | figS6b | plot_spacer() | figS6c) +
     legend.position = "right"
   )
 
-print(FigS6)
 
 ggsave(paste0(PLOT_FOLDER,"FigS6.png", sep = ""),width=16, height=7, units="in")
 
@@ -3139,7 +3135,6 @@ figS7b <-
   guides(color = "none",
          linetype = "none")
 
-print(figS7b)
 
 
 # FIGURE S7C: SECTORAL DEMAND (DIFF FROM UNCONSTRAINED SUPPLY) -------------
@@ -3206,7 +3201,6 @@ figS7c <-
   ) +
   labs(y = "Mt/yr", x = "") 
 
-print(figS7c)
 
 
 # FIGURE S7 COMBINED -------------------------------------------------------
@@ -3221,7 +3215,6 @@ FigS7 <- (figS5a | figS7b | plot_spacer() | figS7c) +
     legend.position = "right"
   )
 
-print(FigS7)
 
 ggsave(paste0(PLOT_FOLDER,"FigS7.png", sep = ""),width=16, height=7, units="in")
 
@@ -3306,7 +3299,6 @@ figS8a <-
                                                                                         "Short lead times Steady-state constrained supply" = "Steady-state constrained supply scenarios"))+
   labs(y = "Mt/yr", x = "")
 
-print(figS8a)
 
 # FIGURE S8B SHORT LT  ----------------------------------------------------------------
 
@@ -3411,7 +3403,6 @@ FigS8b <-
   labs(y = "Mt", x = "") +
   guides(linetype = "none")
 
-print(FigS8b)
 
 
 # FIGURE S8 COMBINED ---------------------------------------------------
@@ -3426,7 +3417,6 @@ FigS8 <- (figS8a | FigS8b) +
     legend.position = "right"
   )
 
-print(FigS8)
 
 
 ggsave(paste0(PLOT_FOLDER,"FigS8.png", sep = ""),width=15, height=7, units="in")
@@ -4053,7 +4043,6 @@ FigS9a_alt <-
   ) +
   labs(x = "", y = "Relative change \n (1=Unconstrained supply)", title = "Electricity generation prices") 
 
-print(FigS9a_alt)
 
 # FIGURE S9B TRANSPORT PRICES PLOT ---------------------------------------
 
@@ -4088,7 +4077,6 @@ FigS9b_alt <-
   ) +
   labs(x = "", y = "Relative change \n (1=Unconstrained supply)", title = "4W LDV prices") 
 
-print(FigS9b_alt)
 
 
 # FIGURE S9c: ELECTRICITY GENERATION DIFF ----------------------------------
@@ -4159,11 +4147,6 @@ FigS9c <-
   ) +
   labs(x = "", y = "Relative change \n (1=Unconstrained supply)", title = "Electricity generation") 
 
-print(FigS9c)
-
-
-
-
 
 # FIGURE S9D: TRANSPORT SERVICE DIFF ----------------------------------
 
@@ -4207,7 +4190,7 @@ FigS9d <-
   labs(x = "", y = "Relative change \n (1=Unconstrained supply)", title = "4W LDV service output") 
 
 
-print(FigS9d)
+
 
 
 
@@ -4230,13 +4213,9 @@ FigS9alt <- ( row2 / row3) +
     legend.position = "right"
   )
 
-print(FigS9alt)
 
 ggsave(paste0(PLOT_FOLDER,"FigS9.png", sep = ""),width=15, height=10, units="in")
 
-
-
-print(FigS9alt)
 
 ggsave(paste0(PLOT_FOLDER,"FigS9.png", sep = ""),width=15, height=10, units="in")
 
@@ -4304,7 +4283,6 @@ FigS10a <-
   ) +
   labs(y = "EJ \n (Reference-Unconstrained supply)", x = "", title = "Electricity generation") 
 
-print(FigS10a)
 
 
 # FIGURE S10B: TRANSPORT SERVICE DIFF ----------------------------------
@@ -4361,7 +4339,6 @@ FigS10b <-
   ) +
   labs(y = "trillion pass-km \n (Reference-Unconstrained supply)", x = "", title = "4W LDV service output") 
 
-print(FigS10b)
 
 
 # FIGURE S10 COMBINED -----------------------------------------------------
@@ -4372,7 +4349,6 @@ FigS10 <- (FigS10a + FigS10b) +
   )+
   plot_annotation(tag_levels = "A")
 
-print(FigS10)
 
 
 ggsave(paste0(PLOT_FOLDER,"FigS10.png", sep = ""),width=15, height=7, units="in")
@@ -4413,7 +4389,7 @@ ggplot() +
   scale_color_viridis_c(option="turbo")+
   scale_y_continuous(limits = c(0,NA))+
   scale_x_continuous(limits = c(0,NA))+
-  labs(y = "2025$/t Cu", x = "Mt", title = "GCAM32 copper supply curves")+
+  labs(y = "2025$/t Cu", x = "Mt", title = "GCAM32 copper supply curves")
 ggsave(paste0(PLOT_FOLDER,"FigS14.png", sep = ""),width=17, height=10, units="in")
 
 ggplot() +
@@ -4432,7 +4408,7 @@ ggplot() +
   scale_color_viridis_c(option="turbo")+
   scale_y_continuous(limits = c(0,NA))+
   scale_x_continuous(limits = c(0,NA))+
-  labs(y = "2025$/t LCE", x = "Mt", title = "GCAM32 lithium supply curves")+
+  labs(y = "2025$/t LCE", x = "Mt", title = "GCAM32 lithium supply curves")
 ggsave(paste0(PLOT_FOLDER,"FigS15.png", sep = ""),width=17, height=10, units="in")
 
 
@@ -4452,7 +4428,7 @@ ggplot() +
   scale_color_viridis_c(option="turbo")+
   scale_y_continuous(limits = c(0,NA))+
   scale_x_continuous(limits = c(0,NA))+
-  labs(y = "2025$/t Ni", x = "Mt", title = "GCAM32 nickel supply curves")+
+  labs(y = "2025$/t Ni", x = "Mt", title = "GCAM32 nickel supply curves")
 ggsave(paste0(PLOT_FOLDER,"FigS16.png", sep = ""),width=17, height=10, units="in")
 
 
@@ -4519,7 +4495,7 @@ p0 <-
     legend.position = "right",
     legend.key.width = unit(1, "cm")
   ) +
-  labs(y = "% (Reference - Unconstrained)", x = "", title = "Reductions in mineral consumption by sector")+
+  labs(y = "% (Reference - Unconstrained)", x = "", title = "Reductions in mineral consumption by sector")
   ggsave(paste0(PLOT_FOLDER,"FigS17.png", sep = ""),width=12, height=5, units="in")
 
 
