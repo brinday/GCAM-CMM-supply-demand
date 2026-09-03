@@ -14,8 +14,6 @@ Northey et al. (2014),copper,2075,,,12.1,68.7,
 Northey et al. (2014),copper,2100,,,0.1,99.1,
 Elshkaki et al. (2016),copper,2040,,,45,,
 Elshkaki et al. (2016),copper,2050,,,53,55,
-Castillo and Eggert (2020),copper,2050,,,,,1193
-Castillo and Eggert (2020),copper,2050,,,,,1551
 Castillo and Eggert (2020),copper,2100,,,,,4788
 Castillo and Eggert (2020),copper,2100,,,,,7136
 de Koning et al. (2018),copper,2050,,,,27,
@@ -32,6 +30,31 @@ Watari et al. (2018),copper,2050,,,,102,
 Watari et al. (2018),copper,2050,,,,108,
 Watari et al. (2018),copper,2060,,,,,3500
 Valero et al. (2018),copper,2050,,,,,767
+Simon et al. (2026),copper,2050,,,,37.1,
+Simon et al. (2026),copper,2050,,,,45.7,
+Simon et al. (2026),copper,2050,,,,91.7,
+Simon et al. (2026),copper,2030,,,18.74,,
+Simon et al. (2026),copper,2040,,,22.4,,
+Simon et al. (2026),copper,2050,,,24.97,,
+Parpan et al. (2026),copper,2050,,,22,,
+Parpan et al. (2026),copper,2050,,,34,,
+Parpan et al. (2026),copper,2050,,,40,,759
+Parpan et al. (2026),copper,2035,,,,29,
+Parpan et al. (2026),copper,2050,,,,51,1018
+Klose and Pauliuk (2023),copper,2035,,,,26,
+Klose and Pauliuk (2023),copper,2050,,,,30,
+BHP (2024),copper,2035,,,21,26,
+BHP (2024),copper,2035,,,35,,
+S&P Global (2022),copper,2030,,,33.9,39.9,
+S&P Global (2022),copper,2030,,,39.5,,
+S&P Global (2022),copper,2035,,,39,48.9,
+S&P Global (2022),copper,2035,,,47.3,,
+S&P Global (2022),copper,2040,,,44.4,47.8,
+S&P Global (2022),copper,2040,,,48.4,,
+S&P Global (2022),copper,2045,,,47.7,49.1,
+S&P Global (2022),copper,2045,,,50.4,,
+S&P Global (2022),copper,2050,,,50.4,53,
+S&P Global (2022),copper,2050,,,53.8,,
 Calvo et al. (2017),lithium,1995,2.2,12,,,
 USGS MCS (2015),lithium,2015,13.5,39.5,,,
 Fleming et al. (2024),lithium,2022,,136,,,
@@ -39,8 +62,8 @@ Busch et al. (2025),lithium,2025,21.6,108,,,
 USGS MCS (2026),lithium,2025,37,150,,,
 IEA (2025),lithium,2030,,,0.47,0.45,
 IEA (2025),lithium,2040,,,0.41,0.92,
+IEA (2025),lithium,2050,,,,,30
 Busch et al. (2025),lithium,2050,,,,1.7,
-Busch et al. (2025),lithium,2050,,,,,30
 Wu et al. (2025),lithium,2030,,,,2,
 Wu et al. (2025),lithium,2050,,,,5,
 Watari et al. (2018),lithium,2030,,,,0.12,
@@ -53,8 +76,6 @@ Hache et al. (2019),lithium,2030,,,,0.17,
 Hache et al. (2019),lithium,2030,,,,0.45,
 Hache et al. (2019),lithium,2050,,,,0.3,
 Hache et al. (2019),lithium,2050,,,,1.2,
-Hache et al. (2019),lithium,2050,,,,,8
-Hache et al. (2019),lithium,2050,,,,,24
 Valero et al. (2018),lithium,2030,,,,0.7,
 Valero et al. (2018),lithium,2050,,,,0.95,27
 Ziemann et al. (2018),lithium,2030,,,,0.2,
@@ -81,7 +102,6 @@ IEA (2025),nickel,2040,,,4.6,5.6,
 Calvo et al. (2017),nickel,1995,47,130,,,
 Calvo et al. (2017),nickel,2015,79,130,,,
 Elshkaki et al. (2017),nickel,2010,76,,,,
-Elshkaki et al. (2017),nickel,2040,,,,,75
 Elshkaki et al. (2017),nickel,2050,,,3.15,4.5,
 Olafsdottir & Sverdrup (2021),nickel,2021,266,342,,,
 Zhang et al. (2025),nickel,2023,,365,,,
