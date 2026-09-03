@@ -1,12 +1,24 @@
-# Program Name: Figure-Table_S1_BY_paper.R
-# Author: Nastya
-# Date Last Updated: 5/14/2026
+# Program Name: literature_comparison_figures.R
+# Author: Nastya Zagoruichyk
+# Date Last Updated: 9/3/2026
 
 # =====================================================================
 # Constants and Setup
 # =====================================================================
 
-       
+# Load packages ---------------------------------------------------------------
+library(patchwork)
+library(readr)
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(ggplot2)
+library(data.table)
+library(purrr)
+library(readxl)
+library(tidyverse)
+
 
 SCENARIO_labels <- c("01272026_UnlimitSupply_BR" = "Unconstrained supply",
                      "01272026_UnlimitSupply_EnR" = "Unconstrained supply: Increased recycling",
@@ -26,7 +38,8 @@ SCENARIO_labels <- c("01272026_UnlimitSupply_BR" = "Unconstrained supply",
 
 
 source_palette <- c(
-  "Castillo and Eggert (2020)" = "#1B9E77",
+  "IEA (2025)" = "#E78AC3",   
+  "Castillo and Eggert (2020)" = "blue",
   "Calvo et al. (2017)" = "#D95F02",
   "Sverdrup et al. (2017)" = "#56B4E9",
   "Fleming et al. (2024)" = "#D4A017",
@@ -38,6 +51,7 @@ source_palette <- c(
   "Bradley et al. (2025)" = "#A6D854",
   "Zhang et al. (2025)" = "#984EA3",
   "Watari et al. (2018)" = "#4DAF4A",      
+  "Parpan et al. (2026)" = "#008080",
   "Valero et al. (2018)" = "#FF7F00",      
   "Hache et al. (2019)" = "#377EB8"        
 )
@@ -59,25 +73,29 @@ source_palette_annual <- c(
   "Harvey (2018)" = "#FB9A99",             
   "Sverdrup (2016)" = "#17BECF",           
   "Vikström et al. (2013)" = "#BC80BD",    
-  "Kushnir and Sandén (2012)" = "#FDB462"  
+  "Kushnir and Sandén (2012)" = "#FDB462",
+  "Simon et al. (2026)" = "#D73027",
+  "Parpan et al. (2026)" = "#008080",
+  "Klose and Pauliuk (2023)" = "#984EA3",
+  "BHP (2024)" = "#E6AB02",
+  "S&P Global (2022)" = "#333333"
 )
+
 # =====================================================================
 # Load Inputs 
 # =====================================================================
 
 CMM_data <- read_csv(
-  "input/data/Table_S1_Summary_CMM.csv"
-) %>% 
-  filter(!(source == "Castillo and Eggert (2020)" & year == 2100))
+  "input/data/Table_S1_Summary_CMM.csv")
 
 GCAM_data_reserves <- read_csv("input/data/global_res_avail_total.csv") %>% 
-  filter(year %in% 2021:2075) %>%
+  filter(year %in% 2021:2100) %>%
   mutate(scenario = SCENARIO_labels[scenario]) 
 
 GCAM_data_cumulative_demand <- read_csv(
   "input/data/global_total_cum_res_prod.csv"
 ) %>% 
-  filter(year %in% 2021:2075) %>%
+  filter(year %in% 2021:2100) %>%
   mutate(scenario = SCENARIO_labels[scenario]) 
 
 GCAM_data_annual_demand <- read_csv(
@@ -191,10 +209,75 @@ GCAM_ribbons <- GCAM_ribbons %>%
   mutate(mineral = factor(mineral, levels = c("copper", "lithium", "nickel")))
 
 # =====================================================
-# 3. PLOT 
+# 3.a) PLOT (S1 a): historical data only 
 # =====================================================
 
-combined_plot <- ggplot() +
+CMM_plot_history <- CMM_plot %>% 
+  filter(!type == "Cumulative Demand") 
+
+combined_plot_a <- ggplot() +
+  geom_point(
+    data = CMM_plot_history,
+    aes(x = year, y = value,
+        shape = type,
+        color = source),
+    size = 3
+  ) +
+  scale_color_manual(
+    name = "Source",
+    values = source_palette
+  ) +
+  scale_shape_manual(
+    name = "Point type",
+    values = c(
+      "Reserves" = 17,
+      "Reserves+Resources" = 2
+    )
+  ) +
+  facet_wrap(~ mineral, scales = "free_y", ncol = 1) +  
+  scale_x_continuous(
+    breaks = seq(1995, 2025, by = 5)
+  ) +
+  
+  labs(
+    x = NULL,
+    y = "Mt"
+  ) +
+  
+  theme_bw(base_size = 12) +
+  theme(
+    legend.position = "right",
+    legend.box = "vertical",
+    legend.key.width = unit(1, "cm"), 
+    legend.spacing.y = unit(0.05, "cm"),  
+    legend.key.height = unit(0.4, "cm"),   
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
+   guides(
+    fill = guide_legend(order = 4),
+    color = guide_legend(order = 1),
+    linetype = guide_legend(order = 3),
+    shape = guide_legend(order = 2)
+  )
+
+
+ggsave(
+  "output/FigS1_a.png",
+  combined_plot_a,
+  width = 6,  
+  height = 8,   
+  dpi = 300
+)
+
+# =====================================================
+# 3.b) PLOT (S1 b): GCAM data and cumulative demand
+# =====================================================
+CMM_plot_future <- CMM_plot %>% 
+  filter(type == "Cumulative Demand") 
+
+
+combined_plot_b <- ggplot() +
   
   annotate("rect",
            xmin = -Inf, xmax = 2026,
@@ -239,7 +322,7 @@ combined_plot <- ggplot() +
   ) +
   new_scale_color() +
   geom_point(
-    data = CMM_plot,
+    data = CMM_plot_future,
     aes(x = year, y = value,
         shape = type,
         color = source),
@@ -266,7 +349,7 @@ combined_plot <- ggplot() +
   ) +
   facet_wrap(~ mineral, scales = "free_y", ncol = 1) +  
   scale_x_continuous(
-    breaks = seq(1995, 2100, by = 10)
+    breaks = seq(2020, 2100, by = 10)
   ) +
   
   labs(
@@ -284,23 +367,21 @@ combined_plot <- ggplot() +
     panel.grid.minor = element_blank(),
     axis.text.x = element_text(angle = 45, hjust = 1)
   ) +
-   guides(
+  guides(
     fill = guide_legend(order = 4),
     color = guide_legend(order = 1),
     linetype = guide_legend(order = 3),
     shape = guide_legend(order = 2)
   )
 
-combined_plot
 
 ggsave(
-  "output/FigS1.png",
-  combined_plot,
+  "output/FigS1_b.png",
+  combined_plot_b,
   width = 8,  
   height = 8,   
   dpi = 300
 )
-
 #===============================================================================
 # 4. PREPARE CMM ANNUAL DATA 
 #===============================================================================
@@ -389,12 +470,26 @@ GCAM_ribbons_annual <- GCAM_demand_annual %>%
 
 # Combined annual plot
 
+CMM_annual_data$type <- factor(
+  CMM_annual_data$type,
+  levels = c("Annual Supply", "Annual Demand")
+)
+
+GCAM_ribbons_demand_annual <- transform(
+  GCAM_ribbons_annual,
+  type = factor(
+    "Annual Demand",
+    levels = levels(CMM_annual_data$type)
+  )
+)
+
 combined_plot_annual <- ggplot() +
   geom_ribbon(
-    data = GCAM_ribbons_annual,
+    data = GCAM_ribbons_demand_annual,
     aes(x = year, ymin = ymin, ymax = ymax,
         fill = scenario_group),
-    alpha = 0.2
+    alpha = 0.2,
+    inherit.aes = FALSE
   ) +
   geom_line(
     data = GCAM_lines_annual,
@@ -430,17 +525,17 @@ combined_plot_annual <- ggplot() +
     )
   ) +
   new_scale_color() +
-  # Demand points first
+  # Supply points 
   geom_point(
-    data = subset(CMM_annual_data, type == "Annual Demand"),
+    data = subset(CMM_annual_data, type == "Annual Supply"),
     aes(x = year, y = value,
         shape = type,
         color = source),
     size = 3
   ) +
-  # Supply points second (drawn on top)
+  # Demand points 
   geom_point(
-    data = subset(CMM_annual_data, type == "Annual Supply"),
+    data = subset(CMM_annual_data, type == "Annual Demand"),
     aes(x = year, y = value,
         shape = type,
         color = source),
@@ -451,19 +546,25 @@ combined_plot_annual <- ggplot() +
     values = source_palette_annual
   ) +
   scale_linetype_manual(
-    name = "Line type",
+    name = "GCAM results",
     values = c(
-      "GCAM: Annual Demand" = "solid"
-      )
+      "Annual Supply" = "solid",
+      "Annual Demand" = "solid"
+    )
   ) +
   scale_shape_manual(
     name = "Point type",
     values = c(
-      "Annual Demand" = 16,
-      "Annual Supply" = 17
+      "Annual Supply" = 17,
+      "Annual Demand" = 16
       )
   ) +
-  facet_wrap(~ mineral, scales = "free_y", ncol = 1) +  
+  facet_grid(
+    rows = vars(mineral),
+    cols = vars(type),
+    scales = "free_y",
+    drop = FALSE
+  ) +
   scale_x_continuous(
     breaks = seq(2025, 2100, by = 5)
   ) +
@@ -481,8 +582,9 @@ combined_plot_annual <- ggplot() +
     legend.spacing.y = unit(0.05, "cm"),   
     legend.key.height = unit(0.4, "cm"),   
     panel.grid.minor = element_blank(),
-    axis.text.x = element_text(angle = 45, hjust = 1)
-  ) +
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    strip.background = element_rect(fill = "grey90", colour = "grey40")
+    ) +
   guides(
     fill = guide_legend(order = 4),
     color = guide_legend(order = 1),
@@ -490,12 +592,11 @@ combined_plot_annual <- ggplot() +
     shape = guide_legend(order = 2)
   ) 
 
-combined_plot_annual
 
 ggsave(
   "output/FigS2.png",
   combined_plot_annual,
-  width = 8,  
+  width = 10,  
   height = 8,   
   dpi = 300
 )
