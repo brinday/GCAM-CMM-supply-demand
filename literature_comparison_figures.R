@@ -38,7 +38,8 @@ SCENARIO_labels <- c("01272026_UnlimitSupply_BR" = "Unconstrained supply",
 
 
 source_palette <- c(
-  "Castillo and Eggert (2020)" = "#1B9E77",
+  "IEA (2025)" = "#E78AC3",   
+  "Castillo and Eggert (2020)" = "blue",
   "Calvo et al. (2017)" = "#D95F02",
   "Sverdrup et al. (2017)" = "#56B4E9",
   "Fleming et al. (2024)" = "#D4A017",
@@ -85,18 +86,16 @@ source_palette_annual <- c(
 # =====================================================================
 
 CMM_data <- read_csv(
-  "input/data/Table_S1_Summary_CMM.csv"
-) %>% 
-  filter(!(source == "Castillo and Eggert (2020)" & year == 2100))
+  "input/data/Table_S1_Summary_CMM.csv")
 
 GCAM_data_reserves <- read_csv("input/data/global_res_avail_total.csv") %>% 
-  filter(year %in% 2021:2075) %>%
+  filter(year %in% 2021:2100) %>%
   mutate(scenario = SCENARIO_labels[scenario]) 
 
 GCAM_data_cumulative_demand <- read_csv(
   "input/data/global_total_cum_res_prod.csv"
 ) %>% 
-  filter(year %in% 2021:2075) %>%
+  filter(year %in% 2021:2100) %>%
   mutate(scenario = SCENARIO_labels[scenario]) 
 
 GCAM_data_annual_demand <- read_csv(
@@ -210,10 +209,75 @@ GCAM_ribbons <- GCAM_ribbons %>%
   mutate(mineral = factor(mineral, levels = c("copper", "lithium", "nickel")))
 
 # =====================================================
-# 3. PLOT 
+# 3.a) PLOT (S1 a): historical data only 
 # =====================================================
 
-combined_plot <- ggplot() +
+CMM_plot_history <- CMM_plot %>% 
+  filter(!type == "Cumulative Demand") 
+
+combined_plot_a <- ggplot() +
+  geom_point(
+    data = CMM_plot_history,
+    aes(x = year, y = value,
+        shape = type,
+        color = source),
+    size = 3
+  ) +
+  scale_color_manual(
+    name = "Source",
+    values = source_palette
+  ) +
+  scale_shape_manual(
+    name = "Point type",
+    values = c(
+      "Reserves" = 17,
+      "Reserves+Resources" = 2
+    )
+  ) +
+  facet_wrap(~ mineral, scales = "free_y", ncol = 1) +  
+  scale_x_continuous(
+    breaks = seq(1995, 2025, by = 5)
+  ) +
+  
+  labs(
+    x = NULL,
+    y = "Mt"
+  ) +
+  
+  theme_bw(base_size = 12) +
+  theme(
+    legend.position = "right",
+    legend.box = "vertical",
+    legend.key.width = unit(1, "cm"), 
+    legend.spacing.y = unit(0.05, "cm"),  
+    legend.key.height = unit(0.4, "cm"),   
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
+   guides(
+    fill = guide_legend(order = 4),
+    color = guide_legend(order = 1),
+    linetype = guide_legend(order = 3),
+    shape = guide_legend(order = 2)
+  )
+
+
+ggsave(
+  "output/FigS1_a.png",
+  combined_plot_a,
+  width = 6,  
+  height = 8,   
+  dpi = 300
+)
+
+# =====================================================
+# 3.b) PLOT (S1 b): GCAM data and cumulative demand
+# =====================================================
+CMM_plot_future <- CMM_plot %>% 
+  filter(type == "Cumulative Demand") 
+
+
+combined_plot_b <- ggplot() +
   
   annotate("rect",
            xmin = -Inf, xmax = 2026,
@@ -258,7 +322,7 @@ combined_plot <- ggplot() +
   ) +
   new_scale_color() +
   geom_point(
-    data = CMM_plot,
+    data = CMM_plot_future,
     aes(x = year, y = value,
         shape = type,
         color = source),
@@ -285,7 +349,7 @@ combined_plot <- ggplot() +
   ) +
   facet_wrap(~ mineral, scales = "free_y", ncol = 1) +  
   scale_x_continuous(
-    breaks = seq(1995, 2100, by = 10)
+    breaks = seq(2020, 2100, by = 10)
   ) +
   
   labs(
@@ -303,23 +367,21 @@ combined_plot <- ggplot() +
     panel.grid.minor = element_blank(),
     axis.text.x = element_text(angle = 45, hjust = 1)
   ) +
-   guides(
+  guides(
     fill = guide_legend(order = 4),
     color = guide_legend(order = 1),
     linetype = guide_legend(order = 3),
     shape = guide_legend(order = 2)
   )
 
-combined_plot
 
 ggsave(
-  "output/FigS1.png",
-  combined_plot,
+  "output/FigS1_b.png",
+  combined_plot_b,
   width = 8,  
   height = 8,   
   dpi = 300
 )
-
 #===============================================================================
 # 4. PREPARE CMM ANNUAL DATA 
 #===============================================================================
@@ -530,7 +592,6 @@ combined_plot_annual <- ggplot() +
     shape = guide_legend(order = 2)
   ) 
 
-combined_plot_annual
 
 ggsave(
   "output/FigS2.png",
