@@ -18,6 +18,15 @@ library(data.table)
 library(purrr)
 library(readxl)
 library(tidyverse)
+library(ggnewscale)
+library(grid)
+
+# Required packages
+library(ggnewscale)
+if (!requireNamespace("ggh4x", quietly = TRUE)) {
+  install.packages("ggh4x")
+}
+library(ggh4x)
 
 
 SCENARIO_labels <- c("01272026_UnlimitSupply_BR" = "Unconstrained supply",
@@ -209,23 +218,73 @@ GCAM_ribbons <- GCAM_ribbons %>%
   mutate(mineral = factor(mineral, levels = c("copper", "lithium", "nickel")))
 
 # =====================================================
-# 3.a) PLOT (S1 a): historical data only 
+# 3. Arranging y-axis for the S1 figure
 # =====================================================
+CMM_plot_history <- CMM_plot %>%
+  filter(type != "Cumulative Demand")
 
-CMM_plot_history <- CMM_plot %>% 
-  filter(!type == "Cumulative Demand") 
+CMM_plot_future <- CMM_plot %>%
+  filter(type == "Cumulative Demand")
 
+# Ensure both plots use the same mineral order
+mineral_levels <- sort(unique(c(
+  as.character(CMM_plot_history$mineral),
+  as.character(CMM_plot_future$mineral),
+  as.character(GCAM_ribbons$mineral),
+  as.character(GCAM_lines$mineral)
+)))
+
+CMM_plot_history$mineral <- factor(CMM_plot_history$mineral, levels = mineral_levels)
+CMM_plot_future$mineral <- factor(CMM_plot_future$mineral, levels = mineral_levels)
+GCAM_ribbons$mineral <- factor(GCAM_ribbons$mineral, levels = mineral_levels)
+GCAM_lines$mineral <- factor(GCAM_lines$mineral, levels = mineral_levels)
+
+# =====================================================
+# Mineral-specific y-axis limits shared by panels A and B
+# =====================================================
+y_limits_by_mineral <- lapply(mineral_levels, function(m) {
+  values <- c(
+    CMM_plot_history$value[CMM_plot_history$mineral == m],
+    CMM_plot_future$value[CMM_plot_future$mineral == m],
+    GCAM_ribbons$ymin[GCAM_ribbons$mineral == m],
+    GCAM_ribbons$ymax[GCAM_ribbons$mineral == m],
+    GCAM_lines$value[GCAM_lines$mineral == m]
+  )
+  
+  values <- values[is.finite(values)]
+  y_range <- range(values, na.rm = TRUE)
+  y_pad <- 0.05 * diff(y_range)
+  
+  if (!is.finite(y_pad) || y_pad == 0) {
+    y_pad <- max(abs(y_range[1]) * 0.05, 1)
+  }
+  
+  c(y_range[1] - y_pad, y_range[2] + y_pad)
+})
+
+names(y_limits_by_mineral) <- mineral_levels
+
+mineral_y_scales <- lapply(y_limits_by_mineral, function(lim) {
+  scale_y_continuous(
+    name = "Mt",
+    limits = lim,
+    expand = expansion(mult = c(0, 0))
+  )
+})
+
+# =====================================================
+# PLOT (S1 A): historical data only
+# =====================================================
 combined_plot_a <- ggplot() +
   geom_point(
     data = CMM_plot_history,
-    aes(x = year, y = value,
-        shape = type,
-        color = source),
+    aes(x = year, y = value, shape = type, color = source),
     size = 3
   ) +
   scale_color_manual(
-    name = "Source",
-    values = source_palette
+    name = "Historical Estimates sources",
+    values = source_palette,
+    drop = FALSE
   ) +
   scale_shape_manual(
     name = "Point type",
@@ -234,68 +293,48 @@ combined_plot_a <- ggplot() +
       "Reserves+Resources" = 2
     )
   ) +
-  facet_wrap(~ mineral, scales = "free_y", ncol = 1) +  
-  scale_x_continuous(
-    breaks = seq(1995, 2025, by = 5)
-  ) +
-  
-  labs(
-    x = NULL,
-    y = "Mt"
-  ) +
-  
+  facet_wrap(~ mineral, scales = "free_y", ncol = 1) +
+  ggh4x::facetted_pos_scales(y = mineral_y_scales) +
+  scale_x_continuous(breaks = seq(1995, 2025, by = 5)) +
+  labs(x = NULL, y = "Mt") +
   theme_bw(base_size = 12) +
   theme(
     legend.position = "right",
     legend.box = "vertical",
-    legend.key.width = unit(1, "cm"), 
-    legend.spacing.y = unit(0.05, "cm"),  
-    legend.key.height = unit(0.4, "cm"),   
+    legend.key.width = unit(1, "cm"),
+    legend.spacing.y = unit(0.05, "cm"),
+    legend.key.height = unit(0.4, "cm"),
     panel.grid.minor = element_blank(),
     axis.text.x = element_text(angle = 45, hjust = 1)
   ) +
-   guides(
-    fill = guide_legend(order = 4),
+  guides(
     color = guide_legend(order = 1),
-    linetype = guide_legend(order = 3),
     shape = guide_legend(order = 2)
   )
 
-
-ggsave(
-  "output/FigS1_a.png",
-  combined_plot_a,
-  width = 6,  
-  height = 8,   
-  dpi = 300
-)
-
 # =====================================================
-# 3.b) PLOT (S1 b): GCAM data and cumulative demand
+# PLOT (S1 B): GCAM data and cumulative demand
 # =====================================================
-CMM_plot_future <- CMM_plot %>% 
-  filter(type == "Cumulative Demand") 
-
-
 combined_plot_b <- ggplot() +
-  
-  annotate("rect",
-           xmin = -Inf, xmax = 2026,
-           ymin = -Inf, ymax = Inf,
-           fill = "grey90", alpha = 0.5) +
-  
-  geom_vline(xintercept = 2026, linetype = "dashed", color = "grey40") +
+  annotate(
+    "rect",
+    xmin = -Inf, xmax = 2026,
+    ymin = -Inf, ymax = Inf,
+    fill = "grey90", alpha = 0.5
+  ) +
+  geom_vline(
+    xintercept = 2026,
+    linetype = "dashed",
+    color = "grey40"
+  ) +
   geom_ribbon(
     data = GCAM_ribbons,
-    aes(x = year, ymin = ymin, ymax = ymax,
-        fill = scenario_group),
+    aes(x = year, ymin = ymin, ymax = ymax, fill = scenario_group),
     alpha = 0.2
   ) +
   geom_line(
     data = GCAM_lines,
-    aes(x = year, y = value,
-        color = scenario,
-        linetype = type),
+    aes(x = year, y = value, color = scenario, linetype = type),
     linewidth = 1
   ) +
   scale_color_manual(
@@ -320,17 +359,16 @@ combined_plot_b <- ggplot() +
       "GCAM: Steady-state constrained supply scenarios" = "#1F77B4"
     )
   ) +
-  new_scale_color() +
+  ggnewscale::new_scale_color() +
   geom_point(
     data = CMM_plot_future,
-    aes(x = year, y = value,
-        shape = type,
-        color = source),
+    aes(x = year, y = value, shape = type, color = source),
     size = 3
   ) +
   scale_color_manual(
-    name = "Source",
-    values = source_palette
+    name = "Future Projections sources",
+    values = source_palette,
+    drop = FALSE
   ) +
   scale_linetype_manual(
     name = "Line type",
@@ -347,23 +385,17 @@ combined_plot_b <- ggplot() +
       "Reserves+Resources" = 2
     )
   ) +
-  facet_wrap(~ mineral, scales = "free_y", ncol = 1) +  
-  scale_x_continuous(
-    breaks = seq(2020, 2100, by = 10)
-  ) +
-  
-  labs(
-    x = NULL,
-    y = "Mt"
-  ) +
-  
+  facet_wrap(~ mineral, scales = "free_y", ncol = 1) +
+  ggh4x::facetted_pos_scales(y = mineral_y_scales) +
+  scale_x_continuous(breaks = seq(2020, 2100, by = 10)) +
+  labs(x = NULL, y = "Mt") +
   theme_bw(base_size = 12) +
   theme(
     legend.position = "right",
     legend.box = "vertical",
-    legend.key.width = unit(1, "cm"), 
-    legend.spacing.y = unit(0.05, "cm"),  
-    legend.key.height = unit(0.4, "cm"),   
+    legend.key.width = unit(1, "cm"),
+    legend.spacing.y = unit(0.05, "cm"),
+    legend.key.height = unit(0.4, "cm"),
     panel.grid.minor = element_blank(),
     axis.text.x = element_text(angle = 45, hjust = 1)
   ) +
@@ -374,14 +406,49 @@ combined_plot_b <- ggplot() +
     shape = guide_legend(order = 2)
   )
 
+# =====================================================
+# Combine: first plot = A, second plot = B
+# =====================================================
+
+combined_plot_a <- combined_plot_a +
+  labs(title = "A. Historical Estimates")
+
+combined_plot_b <- combined_plot_b +
+  labs(title = "B. Future Projections")
+
+FigS1 <- combined_plot_a + combined_plot_b +
+  patchwork::plot_layout(
+    ncol = 2,
+    guides = "collect"
+  ) &
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0, size = 12),
+    legend.position = "right"
+  )
+
+
+# FigS1 <- combined_plot_a + combined_plot_b +
+#   plot_layout(
+#     ncol = 2,
+#     widths = c(1, 1),
+#     guides = "collect"
+#   ) +
+#   plot_annotation(tag_levels = "A") &
+#   theme(
+#     plot.tag = element_text(face = "bold", size = 14),
+#     legend.position = "right"
+#   )
+
+FigS1
 
 ggsave(
-  "output/FigS1_b.png",
-  combined_plot_b,
-  width = 8,  
-  height = 8,   
+  "output/FigS1.png",
+  FigS1,
+  width = 12,
+  height = 8,
   dpi = 300
 )
+
 #===============================================================================
 # 4. PREPARE CMM ANNUAL DATA 
 #===============================================================================
