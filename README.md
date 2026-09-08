@@ -59,4 +59,4 @@ remotes::install_github(
   upgrade = "never"
 )
 
-6. Run script "generate_figures.R"
+5. Run script "generate_figures.R"
