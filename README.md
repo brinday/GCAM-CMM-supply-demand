@@ -32,8 +32,8 @@ Output data used to generate all results and figures in the paper have been prov
 To reproduce the figures shown in the paper:
 1. Clone the repository
 2. Download the latest prj files from the zenodo repository for "Output data" and add it to the _\input\data folder
-4. Install Rtools 4.4 to run this script: https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html
-5. Install the packages below only ONCE (comment them out after installed):
+3. Install Rtools 4.4 to run this script: https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html
+4. Install the packages below only ONCE (comment them out after installed):
 
 install.packages("devtools", type = "binary")
 install.packages("remotes")
