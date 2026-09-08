@@ -35,15 +35,16 @@ To reproduce the figures shown in the paper:
 3. Install Rtools 4.4 to run this script: https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html
 4. Install the packages below only ONCE (comment them out after installed):
 
+```r
 install.packages("devtools", type = "binary")
 install.packages("remotes")
 
 remotes::install_github(
-   "JGCRI/rgcam",
-   dependencies = TRUE,
-   build_vignettes = FALSE,
-   upgrade = "never"
- )
+  "JGCRI/rgcam",
+  dependencies = TRUE,
+  build_vignettes = FALSE,
+  upgrade = "never"
+)
 
 remotes::install_github(
   "JGCRI/gcamdata",
@@ -58,5 +59,6 @@ remotes::install_github(
   build_vignettes = FALSE,
   upgrade = "never"
 )
+```
 
 5. Run script "generate_figures.R"
