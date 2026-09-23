@@ -5,29 +5,29 @@
 # NOTE:
 # Install Rtools 4.4 to run this script: https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html
 # Install the packages below only ONCE (comment them out after installed)
-install.packages("devtools", type = "binary")
-install.packages("remotes")
-
-remotes::install_github(
-  "JGCRI/rgcam",
-  dependencies = TRUE,
-  build_vignettes = FALSE,
-  upgrade = "never"
-)
-
-remotes::install_github(
-  "JGCRI/gcamdata",
-  dependencies = TRUE,
-  build_vignettes = FALSE,
-  upgrade = "never"
-)
-
-remotes::install_github(
-  "JGCRI/rmap",
-  dependencies = TRUE,
-  build_vignettes = FALSE,
-  upgrade = "never"
-)
+# install.packages("devtools", type = "binary")
+# install.packages("remotes")
+# 
+# remotes::install_github(
+#   "JGCRI/rgcam",
+#   dependencies = TRUE,
+#   build_vignettes = FALSE,
+#   upgrade = "never"
+# )
+# 
+# remotes::install_github(
+#   "JGCRI/gcamdata",
+#   dependencies = TRUE,
+#   build_vignettes = FALSE,
+#   upgrade = "never"
+# )
+# 
+# remotes::install_github(
+#   "JGCRI/rmap",
+#   dependencies = TRUE,
+#   build_vignettes = FALSE,
+#   upgrade = "never"
+# )
 
 # Load packages ---------------------------------------------------------------
 library(patchwork)
@@ -444,43 +444,6 @@ region_colors_reg32 <- c(
 )
 
 region_levels_reg32 <- names(region_colors_reg32)
-
-source_palette <- c(
-  "Castillo and Eggert (2020)" = "#1B9E77",
-  "Calvo et al. (2017)" = "#D95F02",
-  "Sverdrup et al. (2017)" = "#56B4E9",
-  "Fleming et al. (2024)" = "#D4A017",
-  "Busch et al. (2025)" = "#7C2D5A",
-  "USGS MCS (2015)" = "#E41A1C",
-  "USGS MCS (2026)" = "#7570B3",
-  "Elshkaki et al. (2017)" = "#8D6E63",
-  "Olafsdottir & Sverdrup (2021)" = "#C92525",
-  "Bradley et al. (2025)" = "#A6D854",
-  "Zhang et al. (2025)" = "#984EA3",
-  "Watari et al. (2018)" = "#4DAF4A",      
-  "Valero et al. (2018)" = "#FF7F00",      
-  "Hache et al. (2019)" = "#377EB8"        
-)
-
-source_palette_annual <- c(
-  "IEA (2025)" = "#E78AC3",               
-  "Northey et al. (2014)" = "#66C2A5",     
-  "Elshkaki et al. (2016)" = "#A6761D",  
-  "Elshkaki et al. (2017)" = "#8D6E63",    
-  "Busch et al. (2025)" = "#7C2D5A",      
-  "Wu et al. (2025)" = "#4C72B0",          
-  "Bradley et al. (2025)" = "#A6D854",    
-  "de Koning et al. (2018)" = "#E7298A",   
-  "Schipper et al. (2018)" = "#1F78B4",    
-  "Watari et al. (2018)" = "#33A02C",      
-  "Valero et al. (2018)" = "#FF7F00",      
-  "Hache et al. (2019)" = "#6A3D9A",       
-  "Ziemann et al. (2018)" = "#B15928",     
-  "Harvey (2018)" = "#FB9A99",             
-  "Sverdrup (2016)" = "#17BECF",           
-  "Vikström et al. (2013)" = "#BC80BD",    
-  "Kushnir and Sandén (2012)" = "#FDB462"  
-)
 
 # SCENARIO LABELS, LEVELS, etc --------------------------------------------
 
@@ -991,54 +954,177 @@ legend_df <- data.frame(
 )
 
 # --- Plot ---
-world +
-  geom_sf(data = region_sf, fill = "white", color = "grey20", size = 0.2) +
-  scatterpie::geom_scatterpie(
-    aes(x = x, y = y, r = to_radius(total)),
-    data = filter(reg_total_res_prod_pie_pos,
-                  year == 2050, scenario == SCENARIO_ref),
-    cols  = c("copper", "lithium", "nickel"),
-    color = "grey20",
-    alpha = 0.9,
-    lwd   = 0.2
-  ) +
-  
-geom_circle(
-  data = legend_df,
-  aes(x0 = x0, y0 = y0, r = r),
-  fill = "grey90", color = "grey20", lwd = 0.3,
-  inherit.aes = FALSE
-) +
-  geom_text(
-    data = legend_df,
-    aes(x = x0, y = y0 - r - 300000, label = label),
-    size = 3, vjust = 1, inherit.aes = FALSE
-  ) +
-  annotate(
-    "text",
-    x = legend_x0,
-    y = legend_y0 + 2 * max(legend_radii) + 600000,
-    label = "Total production",
-    size = 3.2, fontface = "bold", hjust = 0
-  ) +
-  
-  coord_sf(crs = PROJ) +
-  scale_fill_brewer(palette = "Dark2", name = "Mineral") +
-  theme_void() +
-  theme(
-    plot.background       = element_rect(fill = "white", color = NA),
-    panel.background      = element_rect(fill = NA,      color = NA),
-    legend.background     = element_rect(fill = "white", color = NA),
-    legend.box.background = element_rect(fill = "white", color = NA),
-    panel.grid.major      = element_line(color = "grey70",
-                                         linetype = "dotted", size = 0.3),
-    legend.position       = "bottom",
-    legend.title          = element_text(size = 10),
-    legend.text           = element_text(size = 9)
+
+minerals <- c(
+  copper = "#1B9E77",
+  lithium = "#D95F02",
+  nickel  = "#7570B3"
+)
+
+prod_long <- reg_total_res_prod_pie_pos %>%
+  filter(year == 2050, scenario == SCENARIO_ref) %>%
+  select(region, all_of(names(minerals))) %>%
+  pivot_longer(
+    cols      = all_of(names(minerals)),
+    names_to  = "mineral",
+    values_to = "production"
   )
 
-ggsave(paste0(PLOT_FOLDER, "Fig1a.png"),
-       width = 9, height = 6, dpi = 300, units = "in")
+map_df <- region_sf %>%
+  select(region, geometry) %>%
+  left_join(prod_long, by = "region") %>%
+  mutate(production = coalesce(production, 0))
+
+# palette style
+
+PALETTE_STYLE <- "multihue"
+
+# Per-mineral 5-anchor ramps: warm light tint → saturated base → deep dark shade
+COLORS <- list(
+  copper  = c("#E8F8F2", "#A8DCC8", "#52B78A", "#1B9E77", "#0A5C42"),
+  lithium = c("#FEF0E6", "#FDBA74", "#F97316", "#D95F02", "#7C2D12"),
+  nickel  = c("#F0EFFE", "#C4B8E8", "#9585CC", "#7570B3", "#3D3680")
+)
+
+# Colorspace palette names (one per mineral, sequential HCL families)
+COLORSPACE_PALETTES <- list(
+  copper  = "Teal",
+  lithium = "Heat",
+  nickel  = "Purple-Blue"
+)
+
+# K-means breaks on non-zero values; returns n_bins+1 boundary values
+kmeans_breaks <- function(x, n_bins = 5, seed = 42) {
+  non_zero <- x[x > 0 & !is.na(x)]
+  if (length(non_zero) < n_bins) {
+    return(pretty(x, n = n_bins))
+  }
+  set.seed(seed)
+  km      <- kmeans(non_zero, centers = n_bins, nstart = 25)
+  centers <- sort(km$centers[, 1])
+  mids    <- (centers[-length(centers)] + centers[-1]) / 2
+  c(0, mids, max(x, na.rm = TRUE) * 1.0001)
+}
+
+# Format a numeric break value
+fmt_break <- function(x) {
+  dplyr::case_when(
+    x >= 1e6  ~ paste0(round(x / 1e6, 1), "M"),
+    x >= 1e3  ~ paste0(round(x / 1e3, 1), "k"),
+    TRUE       ~ as.character(round(x, 2))
+  )
+}
+
+# Build bin factor
+make_bins <- function(x, breaks) {
+  labs <- paste0(fmt_break(breaks[-length(breaks)]),
+                 " – ",
+                 fmt_break(breaks[-1]))
+  cut(x,
+      breaks         = breaks,
+      labels         = labs,
+      include.lowest = TRUE,
+      right          = FALSE)
+}
+
+# Dispatch palette based on PALETTE_STYLE
+distinct_steps <- function(mineral_name, n) {
+  base_hex <- unname(minerals[mineral_name])
+  
+  if (PALETTE_STYLE == "multihue") {
+    anchors <- COLORS[[mineral_name]]
+    colorRampPalette(anchors)(n)
+    
+  } else if (PALETTE_STYLE == "dark_stretch") {
+    dark_hex <- colorspace::darken(base_hex, amount = 0.45)
+    colorRampPalette(c("#FFFFFF",
+                       scales::alpha(base_hex, 0.30),
+                       base_hex,
+                       dark_hex))(n)
+    
+  } else if (PALETTE_STYLE == "colorspace") {
+    pal_name <- COLORSPACE_PALETTES[[mineral_name]]
+    # rev() so lightest = lowest bin
+    rev(colorspace::sequential_hcl(n, palette = pal_name))
+    
+  } else {
+    stop("Unknown PALETTE_STYLE: ", PALETTE_STYLE)
+  }
+}
+
+N_BINS <- 5
+
+make_mineral_map <- function(mineral_name) {
+  mineral_data <- filter(map_df, mineral == !!mineral_name)
+  
+  breaks   <- kmeans_breaks(mineral_data$production, n_bins = N_BINS)
+  n_actual <- length(breaks) - 1
+  
+  mineral_data <- mineral_data %>%
+    mutate(bin = make_bins(production, breaks))
+  
+  bin_colors        <- distinct_steps(mineral_name, n_actual)
+  names(bin_colors) <- levels(mineral_data$bin)
+  
+  ggplot() +
+    geom_sf(
+      data        = region_sf,
+      fill        = "white",
+      color       = "grey20",
+      linewidth   = 0.2,
+      inherit.aes = FALSE
+    ) +
+    geom_sf(
+      data        = mineral_data,
+      aes(fill    = bin),
+      color       = "grey20",
+      linewidth   = 0.2,
+      inherit.aes = FALSE
+    ) +
+    coord_sf(crs = PROJ) +
+    scale_fill_manual(
+      values = bin_colors,
+      name   = "Production (Mt/yr)",
+      drop   = FALSE,
+      guide  = guide_legend(
+        direction      = "horizontal",
+        title.position = "top",
+        label.position = "bottom",
+        keywidth       = unit(1.4, "cm"),
+        keyheight      = unit(0.5, "cm"),
+        nrow           = 1
+      )
+    ) +
+    labs(title = tools::toTitleCase(mineral_name)) +
+    theme_void() +
+    theme(
+      plot.background       = element_rect(fill = "white", color = NA),
+      panel.background      = element_rect(fill = NA,      color = NA),
+      legend.background     = element_rect(fill = "white", color = NA),
+      legend.box.background = element_rect(fill = "white", color = NA),
+      panel.grid.major      = element_line(color     = "grey70",
+                                           linetype  = "dotted",
+                                           linewidth = 0.3),
+      legend.position       = "bottom",
+      legend.title          = element_text(size = 9, face = "bold"),
+      legend.text           = element_text(size = 9)
+    )
+}
+
+# Combine 3 maps (copper, lithium, nickel)
+
+map_list <- lapply(names(minerals), make_mineral_map)
+
+Fig1a <- wrap_plots(map_list, nrow = 2, guides = "keep")
+
+ggsave(
+  filename = file.path(PLOT_FOLDER, "Fig1a.png"),
+  plot = Fig1a,
+  width = 9,
+  height = 6,
+  dpi = 300
+)
+
 
 # FIGURE 1B: CUMULATIVE COST STACKED BAR BY REGION  -----------------------------------
 
@@ -1052,10 +1138,22 @@ cum_regAgg_cost_total_allMinerals <- cum_reg_cost_total %>%
   dplyr::summarise(value = sum(value)) 
 
 cum_regAgg_cost_total_allMinerals_diff <- pct_diff_from_2021(cum_regAgg_cost_total_allMinerals,
-                                            ref_scenario = SCENARIO_ref,
-                                            diff_scenarios = SCENARIO_order,
-                                            join_var = c("region"))
+                                                             ref_scenario = SCENARIO_ref,
+                                                             diff_scenarios = SCENARIO_order,
+                                                             join_var = c("region"))
 
+region_abbrev <- c(
+  "Africa_Western"         = "AFW",
+  "Australia_NZ"           = "AUS",
+  "Brazil"                 = "BRA",
+  "China"                  = "CHN",
+  "Indonesia"              = "IDN",
+  "ROW"                    = "ROW",
+  "Russia"                 = "RUS",
+  "South America_Southern" = "SAS",
+  "Southeast Asia"         = "SEA",
+  "USA"                    = "USA"
+)
 
 cum_regAgg_cost_total <- cum_reg_cost_total %>%
   ungroup() %>%
@@ -1064,12 +1162,17 @@ cum_regAgg_cost_total <- cum_reg_cost_total %>%
   rename(region = top_reg_map) %>%
   group_by(scenario, region, resource, year) %>%
   dplyr::summarise(value = sum(value)) %>%
-  mutate(region = factor(region, levels = top_allMinerals_region_order)) 
+  mutate(
+    region = factor(
+      dplyr::recode(as.character(region), !!!region_abbrev),
+      levels = dplyr::recode(top_allMinerals_region_order, !!!region_abbrev)
+    )
+  )
 
 cum_regAgg_cost_total_diff <- pct_diff_from_2021(cum_regAgg_cost_total,
-                                            ref_scenario = SCENARIO_ref,
-                                            diff_scenarios = SCENARIO_order,
-                                            join_var = c("region", "resource"))
+                                                 ref_scenario = SCENARIO_ref,
+                                                 diff_scenarios = SCENARIO_order,
+                                                 join_var = c("region", "resource"))
 
 
 Fig1b <-
@@ -1081,25 +1184,51 @@ Fig1b <-
            stat = "identity", position = position_stack(reverse = TRUE)) +
   geom_hline(yintercept = 0, color = "black", linetype = 2) +
   facet_grid(~year, labeller = labeller(year = as_labeller(c("2025" = "2021-2025",
-                                                           "2050" = "2021-2050",
-                                                           "2075" = "2021-2075"))),
+                                                             "2050" = "2021-2050",
+                                                             "2075" = "2021-2075"))),
              scale = "free")+
   scale_fill_brewer(name = "Mineral", palette = "Dark2")+
   #scale_x_discrete(breaks = rev(top_allMinerals_region_order))+
   theme_bw() +
   theme(
     text = element_text(size = 16),
-  #  axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 14),
+    #  axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 14),
     strip.text = element_text(size = 16),
     legend.position = "right",
     legend.key.width = unit(1, "cm")
   ) +
   coord_flip()+
-  labs(x = "", y = "trillion 2025$", title = "Cumulative extraction costs") 
-
+  # labs(x = "", y = "trillion 2025$", title = "Cumulative extraction costs") 
+  labs(x = "", y = "trillion 2025$")
 
 
 ggsave(paste0(PLOT_FOLDER,"Fig1b.png", sep = ""),width=9, height=3, units="in")
+
+# FIGURE 1A + 1B ---------------------------------------------------------------
+
+# patch titles onto each panel 
+map_list[[1]] <- map_list[[1]] + labs(title = "A. Copper production in 2050")
+map_list[[2]] <- map_list[[2]] + labs(title = "B. Lithium production in 2050")
+map_list[[3]] <- map_list[[3]] + labs(title = "C. Nickel production in 2050")
+Fig1b         <- Fig1b         + labs(title = "D. Commited extraction costs")
+
+
+Fig1 <- ((map_list[[1]] | map_list[[2]]) /
+           (map_list[[3]] | Fig1b) +
+           plot_layout(
+             guides  = "keep",
+             widths  = c(1, 1),
+             heights = c(1, 1)
+           )) & 
+  theme(plot.title = element_text(size = 15))
+
+ggsave(
+  filename = file.path(PLOT_FOLDER, "Fig1.png"),
+  plot     = Fig1,
+  width    = 12,
+  height   = 9,
+  dpi      = 300
+)
 
 # FIGURE 2: GLOBAL SUPPLY-SIDE DYNAMICS ----------------------------------------------------------------
 
