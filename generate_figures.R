@@ -1210,7 +1210,7 @@ ggsave(paste0(PLOT_FOLDER,"Fig1b.png", sep = ""),width=9, height=3, units="in")
 map_list[[1]] <- map_list[[1]] + labs(title = "A. Copper production in 2050")
 map_list[[2]] <- map_list[[2]] + labs(title = "B. Lithium production in 2050")
 map_list[[3]] <- map_list[[3]] + labs(title = "C. Nickel production in 2050")
-Fig1b         <- Fig1b         + labs(title = "D. Commited extraction costs")
+Fig1b         <- Fig1b         + labs(title = "D. Committed extraction costs")
 
 
 Fig1 <- ((map_list[[1]] | map_list[[2]]) /
