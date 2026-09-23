@@ -28,23 +28,26 @@ if (!requireNamespace("ggh4x", quietly = TRUE)) {
 }
 library(ggh4x)
 
-
+# TODO: Change Scenarios
 SCENARIO_labels <- c("01272026_UnlimitSupply_BR" = "Unconstrained supply",
                      "01272026_UnlimitSupply_EnR" = "Unconstrained supply: Increased recycling",
                      "01272026_His_constrSupply_BR_noTC" = "Reference",
-                     "01272026_His_constrSupply_BR_SS_noTC" = "Steady-state supply",
+                     "01272026_His_constrSupply_BR_SS_noTC" = "New resources",
                      "01272026_His_constrSupply_BR_shortLT_noTC" = "Short lead times",
-                     "01272026_His_constrSupply_BR_SS_shortLT_noTC" = "Steady-state supply: Short lead times",
+                     "01272026_His_constrSupply_BR_SS_shortLT_noTC" = "New resources: Short lead times",
                      "01272026_His_constrSupply_EnR_noTC" = "Increased recycling",
-                     "01272026_His_constrSupply_EnR_SS_noTC" = "Steady-state supply: Increased recycling",
+                     "01272026_His_constrSupply_EnR_SS_noTC" = "New resources: Increased recycling",
                      "01272026_His_constrSupply_EnR_shortLT_noTC" = "Short lead times + Increased recycling",
-                     "01272026_His_constrSupply_EnR_SS_shortLT_noTC" = "Steady-state supply: Short lead times + Increased recycling",
+                     "01272026_His_constrSupply_EnR_SS_shortLT_noTC" = "New resources: Short lead times + Increased recycling",
                      "03192026_UnlimitSupply_highDemand" = "Unconstrained supply: High EV demand",
                      "03192026_His_constrSupply_highDemand" = "High EV demand",
-                     "03192026_His_constrSupply_SS_highDemand" = "Steady-state supply: High EV demand",
+                     "03192026_His_constrSupply_SS_highDemand" = "New resources: High EV demand",
                      "03192026_His_constrSupply_shortLT_highDemand" = "Short lead times + High EV demand",
-                     "03192026_His_constrSupply_SS_shortLT_highDemand" = "Steady-state supply: Short lead times + High EV demand")
+                     "03192026_His_constrSupply_SS_shortLT_highDemand" = "New resources: Short lead times + High EV demand",
 
+                     "08312026_His_constrSupply_static_2021" =  "Static at 2021 levels",
+                     "08312026_His_constrSupply_static_2075" = "Static at 2075 levels",
+                     "09022026_His_constrSupply_even_shorterLT_BR" = "Shorter lead times")
 
 source_palette <- c(
   "IEA (2025)" = "#E78AC3",   
@@ -120,7 +123,7 @@ GCAM_data_annual_demand <- read_csv(
 CMM_long <- CMM_data %>% 
   select(-`annual supply projections`, -`annual demand projections`) %>%
   pivot_longer(
-    cols = c(`Global Reserves`, `Global Resources`, `Cumulative Demand Projections`),
+    cols = c(`Global Reserves`, `Global Resources`, `Cumulative Demand Projections`,`Cumulative Supply Projections`),
     names_to = "data_type",
     values_to = "value"
   ) %>% 
@@ -128,6 +131,7 @@ CMM_long <- CMM_data %>%
   mutate(
     type = case_when(
       data_type == "Cumulative Demand Projections" ~ "Cumulative Demand",
+      data_type == "Cumulative Supply Projections" ~ "Cumulative Supply",
       data_type == "Global Reserves" ~ "Reserves",
       data_type == "Global Resources" ~ "Resources"
     )
@@ -157,14 +161,14 @@ GCAM_demand <- GCAM_data_cumulative_demand %>%
       scenario %in% c(
         "Increased recycling","High EV demand","Short lead times",
         "Short lead times + High EV demand","Short lead times + Increased recycling"
-      ) ~ "Baseline constrained supply scenarios",
+      ) ~ "Current resources scenarios",
       
       scenario %in% c(
-        "Steady-state supply: Increased recycling","Steady-state supply: High EV demand",
-        "Steady-state supply: Short lead times",
-        "Steady-state supply: Short lead times + Increased recycling",
-        "Steady-state supply: Short lead times + High EV demand"
-      ) ~ "Steady-state constrained supply scenarios",
+        "New resources: Increased recycling","Steady-state supply: High EV demand",
+        "New resources: Short lead times",
+        "New resources: Short lead times + Increased recycling",
+        "New resources: Short lead times + High EV demand"
+      ) ~ "New resources scenarios",
       
       TRUE ~ scenario
     ),
@@ -181,24 +185,24 @@ GCAM_reserves <- GCAM_data_reserves %>%
 
 
 GCAM_lines <- bind_rows(GCAM_demand, GCAM_reserves) %>%
-  filter(scenario %in% c("Reference", "Steady-state supply")) %>% 
+  filter(scenario %in% c("Reference", "New resources")) %>% 
   mutate(
     scenario = case_when(
       scenario == "Reference" ~ "GCAM: Reference",
-      scenario == "Steady-state supply" ~ "GCAM: Steady-state supply",
+      scenario == "New resources" ~ "GCAM: New resources",
       TRUE ~ scenario
     )
   )
 
 GCAM_ribbons <- GCAM_demand %>%
   filter(scenario_group %in% c(
-    "Baseline constrained supply scenarios",
-    "Steady-state constrained supply scenarios"
+    "Current resources scenarios",
+    "New resources scenarios"
   )) %>%
   mutate(scenario_group = recode(
     scenario_group,
-    "Baseline constrained supply scenarios" = "GCAM: Baseline constrained supply scenarios",
-    "Steady-state constrained supply scenarios" = "GCAM: Steady-state constrained supply scenarios"
+    "Current resources scenarios" = "GCAM: Current resources scenarios",
+    "New resources scenarios" = "GCAM: New resources scenarios"
   )) %>%
   group_by(mineral, year, scenario_group) %>%
   summarise(
@@ -221,21 +225,26 @@ GCAM_ribbons <- GCAM_ribbons %>%
 # 3. Arranging y-axis for the S1 figure
 # =====================================================
 CMM_plot_history <- CMM_plot %>%
-  filter(type != "Cumulative Demand")
+  filter(!type %in% c("Cumulative Demand","Cumulative Supply"))
 
 CMM_plot_future <- CMM_plot %>%
-  filter(type == "Cumulative Demand")
+  filter(type == "Cumulative Demand") 
+
+CMM_plot_future_supply <- CMM_plot %>% 
+  filter(type == "Cumulative Supply") 
 
 # Ensure both plots use the same mineral order
 mineral_levels <- sort(unique(c(
   as.character(CMM_plot_history$mineral),
   as.character(CMM_plot_future$mineral),
+  as.character(CMM_plot_future_supply$mineral),
   as.character(GCAM_ribbons$mineral),
   as.character(GCAM_lines$mineral)
 )))
 
 CMM_plot_history$mineral <- factor(CMM_plot_history$mineral, levels = mineral_levels)
 CMM_plot_future$mineral <- factor(CMM_plot_future$mineral, levels = mineral_levels)
+CMM_plot_future_supply$mineral <- factor(CMM_plot_future_supply$mineral, levels = mineral_levels)
 GCAM_ribbons$mineral <- factor(GCAM_ribbons$mineral, levels = mineral_levels)
 GCAM_lines$mineral <- factor(GCAM_lines$mineral, levels = mineral_levels)
 
@@ -246,6 +255,7 @@ y_limits_by_mineral <- lapply(mineral_levels, function(m) {
   values <- c(
     CMM_plot_history$value[CMM_plot_history$mineral == m],
     CMM_plot_future$value[CMM_plot_future$mineral == m],
+    CMM_plot_future$value[CMM_plot_future_supply$mineral == m],
     GCAM_ribbons$ymin[GCAM_ribbons$mineral == m],
     GCAM_ribbons$ymax[GCAM_ribbons$mineral == m],
     GCAM_lines$value[GCAM_lines$mineral == m]
@@ -341,22 +351,22 @@ combined_plot_b <- ggplot() +
     name = NULL,
     breaks = c(
       "GCAM: Reference",
-      "GCAM: Steady-state supply"
+      "GCAM: New resources"
     ),
     values = c(
       "GCAM: Reference" = "#C51B7D",
-      "GCAM: Steady-state supply" = "#1F77B4"
+      "GCAM: New resources" = "#1F77B4"
     )
   ) +
   scale_fill_manual(
     name = "Scenario",
     breaks = c(
-      "GCAM: Baseline constrained supply scenarios",
-      "GCAM: Steady-state constrained supply scenarios"
+      "GCAM: Current resources scenarios",
+      "GCAM: New resources scenarios"
     ),
     values = c(
-      "GCAM: Baseline constrained supply scenarios" = "#C51B7D",
-      "GCAM: Steady-state constrained supply scenarios" = "#1F77B4"
+      "GCAM: Current resources scenarios" = "#C51B7D",
+      "GCAM: New resources scenarios" = "#1F77B4"
     )
   ) +
   ggnewscale::new_scale_color() +
@@ -365,6 +375,11 @@ combined_plot_b <- ggplot() +
     aes(x = year, y = value, shape = type, color = source),
     size = 3
   ) +
+  geom_point(
+    data = CMM_plot_future_supply,
+    aes(x = year, y = value, shape = type, color = source),
+    size = 3
+  ) +  
   scale_color_manual(
     name = "Future Projections sources",
     values = source_palette,
@@ -381,6 +396,7 @@ combined_plot_b <- ggplot() +
     name = "Point type",
     values = c(
       "Cumulative Demand" = 16,
+      "Cumulative Supply" = 8,
       "Reserves" = 17,
       "Reserves+Resources" = 2
     )
@@ -427,20 +443,6 @@ FigS1 <- combined_plot_a + combined_plot_b +
   )
 
 
-# FigS1 <- combined_plot_a + combined_plot_b +
-#   plot_layout(
-#     ncol = 2,
-#     widths = c(1, 1),
-#     guides = "collect"
-#   ) +
-#   plot_annotation(tag_levels = "A") &
-#   theme(
-#     plot.tag = element_text(face = "bold", size = 14),
-#     legend.position = "right"
-#   )
-
-FigS1
-
 ggsave(
   "output/FigS1.png",
   FigS1,
@@ -454,7 +456,7 @@ ggsave(
 #===============================================================================
 
 CMM_long_annual <- CMM_data %>% 
-  select(-`Global Reserves`,-`Global Resources`, -`Cumulative Demand Projections`) %>%
+  select(-`Global Reserves`,-`Global Resources`, -`Cumulative Demand Projections`, -`Cumulative Supply Projections`) %>%
   filter(!year == "2100") %>% 
   pivot_longer(
     cols = c(`annual supply projections`, `annual demand projections`),
@@ -483,14 +485,15 @@ GCAM_demand_annual <- GCAM_data_annual_demand %>%
       scenario %in% c(
         "Increased recycling","High EV demand","Short lead times",
         "Short lead times + High EV demand","Short lead times + Increased recycling"
-      ) ~ "Baseline constrained supply scenarios",
+      ) ~ "Current resources scenarios",
       
       scenario %in% c(
-        "Steady-state supply: Increased recycling","Steady-state supply: High EV demand",
-        "Steady-state supply: Short lead times",
-        "Steady-state supply: Short lead times + Increased recycling",
-        "Steady-state supply: Short lead times + High EV demand"
-      ) ~ "Steady-state constrained supply scenarios",
+        "New resources: Increased recycling",
+        "New resources: High EV demand",
+        "New resources: Short lead times",
+        "New resources: Short lead times + Increased recycling",
+        "New resources: Short lead times + High EV demand"
+      ) ~ "New resources scenarios",
       
       scenario %in% c(
         "Unconstrained supply: High EV demand", "Unconstrained supply: Increased recycling"
@@ -498,15 +501,15 @@ GCAM_demand_annual <- GCAM_data_annual_demand %>%
       
       TRUE ~ scenario
     ),
-    type = "GCAM: Annual Demand"
+    type = "Annual Demand"
   )
 
 GCAM_lines_annual <- GCAM_demand_annual %>%
-  filter(scenario %in% c("Reference", "Steady-state supply", "Unconstrained supply")) %>% 
+  filter(scenario %in% c("Reference", "New resources", "Unconstrained supply")) %>% 
   mutate(
     scenario = case_when(
       scenario == "Reference" ~ "GCAM: Reference",
-      scenario == "Steady-state supply" ~ "GCAM: Steady-state supply",
+      scenario == "New resources" ~ "GCAM: New resources",
       scenario == "Unconstrained supply" ~ "GCAM: Unconstrained supply",
       TRUE ~ scenario
     )
@@ -514,14 +517,14 @@ GCAM_lines_annual <- GCAM_demand_annual %>%
 
 GCAM_ribbons_annual <- GCAM_demand_annual %>%
   filter(scenario_group %in% c(
-    "Baseline constrained supply scenarios",
-    "Steady-state constrained supply scenarios",
+    "Current resources scenarios",
+    "New resources scenarios",
     "Unconstrained supply scenarios"
   )) %>%
   mutate(scenario_group = recode(
     scenario_group,
-    "Baseline constrained supply scenarios" = "GCAM: Baseline constrained supply scenarios",
-    "Steady-state constrained supply scenarios" = "GCAM: Steady-state constrained supply scenarios",
+    "Current resources scenarios" = "GCAM: Current resources scenarios",
+    "New resources scenarios" = "GCAM: New resources scenarios",
     "Unconstrained supply scenarios" = "GCAM: Unconstrained supply scenarios"
   )) %>%
   group_by(mineral, year, scenario_group) %>%
@@ -550,6 +553,11 @@ GCAM_ribbons_demand_annual <- transform(
   )
 )
 
+GCAM_lines_annual <- transform(
+  GCAM_lines_annual,
+  type = factor("Annual Demand", levels = c("Annual Supply", "Annual Demand"))
+)
+
 combined_plot_annual <- ggplot() +
   geom_ribbon(
     data = GCAM_ribbons_demand_annual,
@@ -569,25 +577,25 @@ combined_plot_annual <- ggplot() +
     name = NULL,
     breaks = c(
       "GCAM: Reference",
-      "GCAM: Steady-state supply",
+      "GCAM: New resources",
       "GCAM: Unconstrained supply"
     ),
     values = c(
       "GCAM: Reference" = "#C51B7D",
-      "GCAM: Steady-state supply" = "#1F77B4",
+      "GCAM: New resources" = "#1F77B4",
       "GCAM: Unconstrained supply" = "forestgreen"
     )
   ) +
   scale_fill_manual(
     name = "Scenario",
     breaks = c(
-      "GCAM: Baseline constrained supply scenarios",
-      "GCAM: Steady-state constrained supply scenarios",
+      "GCAM: Current resources scenarios",
+      "GCAM: New resources scenarios",
       "GCAM: Unconstrained supply scenarios"
     ),
     values = c(
-      "GCAM: Baseline constrained supply scenarios" = "#C51B7D",
-      "GCAM: Steady-state constrained supply scenarios" = "#1F77B4",
+      "GCAM: Current resources scenarios" = "#C51B7D",
+      "GCAM: New resources scenarios" = "#1F77B4",
       "GCAM: Unconstrained supply scenarios" = "forestgreen"
     )
   ) +
