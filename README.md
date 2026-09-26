@@ -8,13 +8,13 @@ To be added
 
 ## Code and Data
 ### GCAM Model Version and Input Files
-Yarlagadda, B. (2026). Input files and model version for GCAM-CMM-supply-demand. Zenodo.
+Yarlagadda, B and A. Zagoruichyk. (2026). Input files and model version for GCAM-CMM-supply-demand. Zenodo.
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20559774.svg)](https://doi.org/10.5281/zenodo.20559774)
 
 This study's model version is based on GCAM v8.2.
 
 ### Output data
-Yarlagadda, B. (2026). Output data from Yarlagadda et al. gcam-CMM-supply-demand-paper
+Yarlagadda, B and A. Zagoruichyk. (2026). Output data from Yarlagadda et al. gcam-CMM-supply-demand-paper
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20571203.svg)](https://doi.org/10.5281/zenodo.20571203)
 
 ### System requirements:
