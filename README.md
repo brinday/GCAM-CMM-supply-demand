@@ -19,10 +19,10 @@ Yarlagadda, B and A. Zagoruichyk. (2026). Output data from Yarlagadda et al. gca
 
 ## Table of Contents
 
-- [Part I: Running a Scenario](#Part I: Running a Scenario)
-- [Part II: Generating the `.prj` File](#Part II: Generating the `.prj` File)
-- [Part III: Generating Data and Figures](#Part III: Generating Data and Figures)
-- [Part IV: Reproducing Figures and Data from Pre-Computed Model Output](#Part IV: Reproducing Figures and Data from Pre-Computed Model Output)
+- [Part I: Running a Scenario](#part-i-running-a-scenario)
+- [Part II: Generating the `.prj` File](#part-ii-generating-the-prj-file)
+- [Part III: Generating Data and Figures](#part-iii-generating-data-and-figures)
+- [Part IV: Reproducing Figures and Data from Pre-Computed Model Output](#part-iv-reproducing-figures-and-data-from-pre-computed-model-output)
 
 ## Part I: Running a Scenario
 
@@ -43,18 +43,18 @@ Download the `gcam_CMM_supply_demand.zip` file from Zenodo and extract it. Insid
 |Reference                                             |configuration_Reference.xml                         |01272026_His_constrSupply_BR_noTC               |
 |Unconstrained supply                                  |configuration_UnconstrSupply.xml                    |01272026_UnlimitSupply_BR                       |
 |Unconstrained supply: Increased recycling             |configuration_UnconstrSupply_IncreasedRecycling.xml |01272026_UnlimitSupply_EnR                      |
-|New resources                                         |configuration_NewResources.xml                      |01272026_His_constrSupply_BR_SS_noTC            |
-|Short lead times                                      |configuration_ShortLT.xml                           |01272026_His_constrSupply_BR_shortLT_noTC       |
-|New resources: Short lead times                       |configuration_NewRes_ShortLT.xml                    |01272026_His_constrSupply_BR_SS_shortLT_noTC    |
-|Increased recycling                                   |configuration_IncreasedRecycling.xml                |01272026_His_constrSupply_EnR_noTC              |
-|New resources: Increased recycling                    |configuration_NewRes_IncreasedRecycling.xml         |01272026_His_constrSupply_EnR_SS_noTC           |
-|Short lead times + Increased recycling                |configuration_ShortLT_IncreasedRecycling.xml        |01272026_His_constrSupply_EnR_shortLT_noTC      |
-|New resources: Short lead times + Increased recycling |configuration_NewRes_ShortLT_IncreasedRecycling.xml |01272026_His_constrSupply_EnR_SS_shortLT_noTC   |
 |Unconstrained supply: High EV demand                  |configuration_UnconstrSupply_HighEVDemand.xml       |03192026_UnlimitSupply_highDemand               |
-|High EV demand                                        |configuration_HighEVDemand.xml                      |03192026_His_constrSupply_highDemand            |
+|New resources                                         |configuration_NewResources.xml                      |01272026_His_constrSupply_BR_SS_noTC            |
 |New resources: High EV demand                         |configuration_NewRes_HighEVDemand.xml               |03192026_His_constrSupply_SS_highDemand         |
-|Short lead times + High EV demand                     |configuration_ShortLT_HighEVDemand.xml              |03192026_His_constrSupply_shortLT_highDemand    |
+|New resources: Short lead times                       |configuration_NewRes_ShortLT.xml                    |01272026_His_constrSupply_BR_SS_shortLT_noTC    |
+|New resources: Increased recycling                    |configuration_NewRes_IncreasedRecycling.xml         |01272026_His_constrSupply_EnR_SS_noTC           |
+|New resources: Short lead times + Increased recycling |configuration_NewRes_ShortLT_IncreasedRecycling.xml |01272026_His_constrSupply_EnR_SS_shortLT_noTC   |
 |New resources: Short lead times + High EV demand      |configuration_NewRes_ShortLT_HighEVDemand.xml       |03192026_His_constrSupply_SS_shortLT_highDemand |
+|Short lead times                                      |configuration_ShortLT.xml                           |01272026_His_constrSupply_BR_shortLT_noTC       |
+|Short lead times + High EV demand                     |configuration_ShortLT_HighEVDemand.xml              |03192026_His_constrSupply_shortLT_highDemand    |
+|Increased recycling                                   |configuration_IncreasedRecycling.xml                |01272026_His_constrSupply_EnR_noTC              |
+|Short lead times + Increased recycling                |configuration_ShortLT_IncreasedRecycling.xml        |01272026_His_constrSupply_EnR_shortLT_noTC      |
+|High EV demand                                        |configuration_HighEVDemand.xml                      |03192026_His_constrSupply_highDemand            |
 |Static at 2021 levels                                 |NA                                                  |08312026_His_constrSupply_static_2021           |
 |Static at 2075 levels                                 |NA                                                  |08312026_His_constrSupply_static_2075           |
 |Shorter lead times                                    |NA                                                  |09022026_His_constrSupply_even_shorterLT_BR     |
