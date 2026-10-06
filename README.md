@@ -27,11 +27,14 @@ Yarlagadda, B and A. Zagoruichyk. (2026). Output data from Yarlagadda et al. gca
 ## Part I: Running a Scenario
 
 ### 1. Install GCAM
-Install the **Release version of GCAM for Windows** by following the video walkthrough:
+If this is your first time running GCAM, install the **Release version of GCAM for Windows** by following the video walkthrough:
 🔗 https://www.youtube.com/watch?v=2Tv-5rryhk8
 
 ### 2. Download and unzip the scenario package
-Download the `gcam_CMM_supply_demand.zip` file from Zenodo and extract it. Inside you will find:
+Download `gcam_CMM_supply_demand.zip` file from Zenodo and extract its contents into a separate folder. 
+Do not extract it into your GCAM Release folder.
+
+Inside you will find:
 - `run-gcam.bat` — the script that launches the model
 - Several configuration files, each defining a different scenario type*
 - Other files necessary to run GCAM
