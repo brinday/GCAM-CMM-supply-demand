@@ -36,7 +36,7 @@ Download the `gcam_CMM_supply_demand.zip` file from Zenodo and extract it. Insid
 - Several configuration files, each defining a different scenario type*
 - Other files necessary to run GCAM
 
-## *The table below shows the mapping of scenarios to configuration files 
+# *The table below shows the mapping of scenarios to configuration files 
 
 |Paper scenario name                                   |Configuration file name                             |GCAM scenario name                              |
 |:-----------------------------------------------------|:---------------------------------------------------|:-----------------------------------------------|
