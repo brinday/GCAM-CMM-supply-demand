@@ -58,9 +58,11 @@ Inside you will find:
 |Increased recycling                                   |configuration_IncreasedRecycling.xml                |01272026_His_constrSupply_EnR_noTC              |
 |Short lead times + Increased recycling                |configuration_ShortLT_IncreasedRecycling.xml        |01272026_His_constrSupply_EnR_shortLT_noTC      |
 |High EV demand                                        |configuration_HighEVDemand.xml                      |03192026_His_constrSupply_highDemand            |
-|Static at 2021 levels                                 |NA                                                  |08312026_His_constrSupply_static_2021           |
-|Static at 2075 levels                                 |NA                                                  |08312026_His_constrSupply_static_2075           |
-|Shorter lead times                                    |NA                                                  |09022026_His_constrSupply_even_shorterLT_BR     |
+|Increased recycling + High EV demand                  |configuration_IncreasedRecycling_HighEVDemand.xml   |09022026_His_constrSupply_EnR_highDemand        |
+|Static at 2021 levels                                 |configuration_Static_2021.xml                       |08312026_His_constrSupply_static_2021           |
+|Static at 2075 levels                                 |configuration_Static_2075.xml                       |08312026_His_constrSupply_static_2075           |
+|Shorter lead times                                    |configuration_ShorterLT.xml                         |09022026_His_constrSupply_even_shorterLT_BR     |
+|25% lower extraction costs                            |configuration_LowerExtrCosts.xml                    |09092026_His_constrSupply_BR_75_costs           |
 
 ### 3. Choose your scenario and edit `run-gcam.bat`
 Right-click `run-gcam.bat` → **Edit** (or open it in Notepad) and make two changes:
@@ -110,11 +112,11 @@ Once you see this message, it is safe to close the terminal. Your output databas
 
 Once your model run has completed and the output database has been saved, use the provided R script to generate a `.prj` file for querying results.
 
-### 1. Download the R script package
-Download and unzip the R script package. Inside you will find `minerals_queries.R`.
-
-### 2. Install Rtools 4.4 to run this script:
+### 1. Install Rtools 4.4:
 🔗 https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html
+
+### 2. Download the R script package
+Download and unzip the `Rgcam_Querying.R` script package. Open it through `Rgcam.Rproj`. Inside you will find `minerals_queries.R`.
 
 ### 3. Install required R packages
 
@@ -163,7 +165,7 @@ Clone or download the repository from GitHub:
 🔗 https://github.com/brinday/GCAM-CMM-supply-demand.git
 
 ### 2. Locate the figure-generation script
-Inside the repository you will find `generate_figures.R`. There, you will see the following lines:
+Open it through `GCAM-CMM-supply-demand.Rproj`. Inside the repository you will find `generate_figures.R`. There, you will see the following lines:
 ```r
 # READ IN DATA ------------------------------------------------------------
 prj_A <- loadProject("input/data/prj_01272026")
@@ -234,7 +236,7 @@ remotes::install_github(
 ```
 
 ### 5. Source the script
-Run the entire `generate_figures.R` script (in RStudio: **Source**, or `Ctrl+Shift+Enter`).
+Open it through `GCAM-CMM-supply-demand.Rproj`. Run the entire `generate_figures.R` script (in RStudio: **Source**, or `Ctrl+Shift+Enter`).
 
 ### 6. Locate the generated data and figures
 Once the script finishes running, the generated data outputs and figures will be saved in the repository's designated output folder.
