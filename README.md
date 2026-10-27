@@ -116,7 +116,7 @@ Once your model run has completed and the output database has been saved, use th
 🔗 https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html
 
 ### 2. Download the R script package
-Download and unzip the `Rgcam_Querying.R` script package. Open it through `Rgcam.Rproj`. Inside you will find `minerals_queries.R`.
+Download and unzip the `rgcam_querying.R` script package. Open it through `Rgcam.Rproj`. Inside you will find `minerals_queries.R`.
 
 ### 3. Install required R packages
 
