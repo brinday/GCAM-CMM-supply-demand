@@ -29,15 +29,19 @@ Yarlagadda, B and A. Zagoruichyk. (2026). Output data from Yarlagadda et al. gca
 ### 1. Install GCAM
 If this is your first time running GCAM, install the **Release version of GCAM for Windows** by following the video walkthrough:
 🔗 https://www.youtube.com/watch?v=2Tv-5rryhk8
+> Following the video instructions will ensure that you have all the necessary pre-requisite software installed in order to successfully run GCAM. However, to replicate this study, you will need to download our study-specific model version (which is different from the release version), following the steps in Step 2.
 
 ### 2. Download and unzip the scenario package
-Download `gcam_CMM_supply_demand.zip` file from Zenodo and extract its contents into a separate folder. 
+Download `gcam_CMM_supply_demand.zip` file from Zenodo (GCAM Model Version and Input Files) and extract its contents into a separate folder. 
 Do not extract it into your GCAM Release folder.
 
 Inside you will find:
 - `run-gcam.bat` — the script that launches the model
+- `gcam.exe` — the compiled executable file of GCAM's source code for this study's model version.
 - Several configuration files, each defining a different scenario type*
 - Other files necessary to run GCAM
+  
+> ⚠️ Note the gcam.exe provided here is Windows-compatible. Users on other platforms can build the gcam.exe from the provided source changes using instructions at: https://jgcri.github.io/gcam-doc/gcam-build.html.
 
 #### *The table below shows the mapping of scenarios to configuration files 
 
