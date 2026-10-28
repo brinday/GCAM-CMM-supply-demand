@@ -126,11 +126,24 @@ Download and unzip the `rgcam_querying.R` script package. Open it through `Rgcam
 
 ```r
 install.packages("devtools", type = "binary")
-
 install.packages("remotes")
 
 remotes::install_github(
   "JGCRI/rgcam",
+  dependencies = TRUE,
+  build_vignettes = FALSE,
+  upgrade = "never"
+)
+
+remotes::install_github(
+  "JGCRI/gcamdata",
+  dependencies = TRUE,
+  build_vignettes = FALSE,
+  upgrade = "never"
+)
+
+remotes::install_github(
+  "JGCRI/rmap",
   dependencies = TRUE,
   build_vignettes = FALSE,
   upgrade = "never"
